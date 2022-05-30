@@ -1,2 +1,9 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<h1>PlantLife</h1>
+
+<ul>
+  <li>
+    <% @gardens.each do |garden| %>
+      <%= garden.name %>
+    <% end %>
+  </li>
+</ul>
