@@ -10,10 +10,51 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_124545) do
+ActiveRecord::Schema.define(version: 2022_05_30_133248) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "actions", force: :cascade do |t|
+    t.bigint "my_plant_id", null: false
+    t.integer "frequency"
+    t.date "date"
+    t.string "type"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["my_plant_id"], name: "index_actions_on_my_plant_id"
+  end
+
+  create_table "gardens", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_gardens_on_user_id"
+  end
+
+  create_table "my_plants", force: :cascade do |t|
+    t.string "nickname"
+    t.string "light_exposure"
+    t.bigint "garden_id", null: false
+    t.bigint "plant_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["garden_id"], name: "index_my_plants_on_garden_id"
+    t.index ["plant_id"], name: "index_my_plants_on_plant_id"
+  end
+
+  create_table "plants", force: :cascade do |t|
+    t.string "species"
+    t.string "common_name"
+    t.string "scientific_name"
+    t.string "water"
+    t.string "soil"
+    t.string "sun"
+    t.string "temperature"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +68,8 @@ ActiveRecord::Schema.define(version: 2022_05_30_124545) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "actions", "my_plants"
+  add_foreign_key "gardens", "users"
+  add_foreign_key "my_plants", "gardens"
+  add_foreign_key "my_plants", "plants"
 end
