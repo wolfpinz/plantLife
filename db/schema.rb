@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_05_30_133248) do
+ActiveRecord::Schema.define(version: 2022_05_30_140505) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,7 +22,9 @@ ActiveRecord::Schema.define(version: 2022_05_30_133248) do
     t.string "type"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id", null: false
     t.index ["my_plant_id"], name: "index_actions_on_my_plant_id"
+    t.index ["user_id"], name: "index_actions_on_user_id"
   end
 
   create_table "gardens", force: :cascade do |t|
@@ -69,6 +71,7 @@ ActiveRecord::Schema.define(version: 2022_05_30_133248) do
   end
 
   add_foreign_key "actions", "my_plants"
+  add_foreign_key "actions", "users"
   add_foreign_key "gardens", "users"
   add_foreign_key "my_plants", "gardens"
   add_foreign_key "my_plants", "plants"
