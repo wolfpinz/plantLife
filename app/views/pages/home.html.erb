@@ -1,4 +1,9 @@
 <h1>PlantLife</h1>
-<% @gardens.each do |garden| %>
-<%= link_to garden.name, garden_path %>
-<% end %>
+
+<ul>
+  <li>
+    <% @gardens.each do |garden| %>
+      <%= garden.name %>
+    <% end %>
+  </li>
+</ul>
