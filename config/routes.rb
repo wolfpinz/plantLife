@@ -6,4 +6,3 @@ Rails.application.routes.draw do
     resources :my_plants, only: [:show, :new, :create, :edit, :update, :destroy]
   end
 end
-xs
