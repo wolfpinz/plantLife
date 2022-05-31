@@ -1,3 +1,7 @@
 <div class="text-center">
   <h2> <%= @garden.name %> </h2>
 <div>
+
+<div id="add">
+  <%= link_to "+", new_garden_my_plant_path(@garden) %>
+</div>
