@@ -37,6 +37,9 @@ garden.save
 #     t.string "soil"
 #     t.string "sun"
 #     t.string "temperature"
+photo1 = URI.open("https://www.meingartenshop.de/pub/media/catalog/product/cache/3a7af0a8e0e317723249dc9098669163/f/d/fd20243wh.jpg")
+photo2 = URI.open("https://cdn.webshopapp.com/shops/59449/files/385900188/image.jpg")
+
 plant1 = Plant.new(
   species: "Kaktus",
   common_name: "Monstera",
@@ -46,6 +49,11 @@ plant1 = Plant.new(
   sun: "geht",
   temperature: "40"
 )
+plant1.photo.attach(
+  io: photo1,
+  filename: "image-1",
+  content_type: 'image/png'
+  )
 
 plant2 = Plant.new(
   species: "Baum",
@@ -56,6 +64,12 @@ plant2 = Plant.new(
   sun: "geht",
   temperature: "41"
 )
+plant2.photo.attach(
+  io: photo2,
+  filename: "image-2",
+  content_type: 'image/png'
+  )
+
 plant1.save
 plant2.save
 
