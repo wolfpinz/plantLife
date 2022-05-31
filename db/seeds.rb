@@ -7,6 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'nokogiri'
+require 'rest-client'
 # seed
 # 1 user
 User.destroy_all
@@ -20,91 +21,58 @@ puts "All Plants destroyed"
 Action.destroy_all
 puts "All Actions destroyed"
 # Plants Scraper
-url = "https://pfaf.org/user/Plant.aspx?LatinName=Monstera+deliciosa"
-html = URI.open(url)
-doc = Nokogiri::HTML(html)
-p doc.search("#ContentPlaceHolder1_lblCommanName").text.strip # gets common name
-p doc.search("#ContentPlaceHolder1_lblFamily").text.strip # gets species
-p doc.search("#ContentPlaceHolder1_lbldisplatinname").text.strip # gets scientific name
-doc.search("#ContentPlaceHolder1_tblIcons img").each do |element|
-  p  element.attribute("alt").value
-end
-#   t.string "species"#
-# t.string "common_name"#
-# t.string "scientific_name"#
-# t.string "water"
-# t.string "soil"
-# t.string "sun"
-# t.string "temperature"
+# url = "https://pfaf.org/user/Plant.aspx?LatinName=Monstera+deliciosa"
+# html = URI.open(url)
+# doc = Nokogiri::HTML(html)
+# p doc.search("#ContentPlaceHolder1_lblCommanName").text.strip # gets common name
+# p doc.search("#ContentPlaceHolder1_lblFamily").text.strip # gets species
+# p doc.search("#ContentPlaceHolder1_lbldisplatinname").text.strip # gets scientific name
+# doc.search("#ContentPlaceHolder1_tblIcons img").each do |element|
+#   p  element.attribute("alt").value
+# end
 
+# Plant API
+# def plant_api_data
+#   ENV["plant_api"]
+# end
+# api_data = { key: plant_api_data }
+response = RestClient.get('https://open.plantbook.io/api/v1/plant/search?alias=acanthus%20ilicifolius', {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"}) # bearer private? alias=user imput ?
+# p response.body
+pid = JSON.parse(response)["results"].first["pid"].gsub(' ', '%20') # (' ', '%20') <== ersetzen des leerzeichens mit den richtigen url syntax
+plant_hash = RestClient.get("https://open.plantbook.io/api/v1/plant/detail/#{pid}/", {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"})
+puts "fetching plant name..."
+plant_name = JSON.parse(plant_hash)["alias"]
+puts "fetching max temp..."
+max_temp = JSON.parse(plant_hash)["max_temp"]
+puts "fetching min temp..."
+min_temp = JSON.parse(plant_hash)["min_temp"]
+puts "fetching max humidity..."
+max_humidity = JSON.parse(plant_hash)["max_env_humid"]
+puts "fetching min humidity..."
+min_humidity = JSON.parse(plant_hash)["min_env_humid"]
+puts "fetching max soil moisture..."
+max_soil_moist = JSON.parse(plant_hash)["max_soil_moist"]
+puts "fetching min soil moisture..."
+min_soil_moist = JSON.parse(plant_hash)["min_soil_moist"]
+puts "fetching img url..."
+image_url = JSON.parse(plant_hash)["image_url"]
 
-# user = User.new(
-#   first_name: "Wolf",
-#   last_name: "Pinz",
-#   email: "wolf@me.com",
-#   password: "123456"
-# )
-# user.save!
-# # 1 garden
-# garden = Garden.new(
-#   name: "My Garden",
-#   user: user
-# )
-# garden.save
+# Plant.new(temperature:max_temp) <== plants atributes sav first Plants.new <== attach img then Plants.save
 
-# 1 plants
-# .string "species"
-#     t.string "common_name"
-#     t.string "scientific_name"
-#     t.string "water"
-#     t.string "soil"
-#     t.string "sun"
-#     t.string "temperature"
-# plant1 = Plant.new(
-#   species: "Kaktus",
-#   common_name: "Monstera",
-#   scientific_name: "Monstera whatever",
-#   water: "viel",
-#   soil: "gut",
-#   sun: "geht",
-#   temperature: "40"
-# )
-
-# plant2 = Plant.new(
-#   species: "Baum",
-#   common_name: "Ficus",
-#   scientific_name: "Fikkifickus",
-#   water: "sehr viel",
-#   soil: "braun",
-#   sun: "geht",
-#   temperature: "41"
-# )
-# plant1.save
-# plant2.save
-
-# 2 my_plants
-
-# my_plant1 = MyPlant.new(
-#   nickname: "Peter",
-#   light_exposure: "doll",
-#   garden: garden,
-#   plant: plant1
-# )
-# my_plant2 = MyPlant.new(
-#   nickname: "Frank",
-#   light_exposure: "geht so",
-#   garden: garden,
-#   plant: plant2
-# )
-# my_plant1.save
-# my_plant2.save
-
-# 1 action
-# action = Action.new(
-#   user: user,
-#   my_plant: my_plant1,
-#   action_type: "water this bitch",
-#   frequency: 7,
-#   date: Date.today
-# )
-# action.save
+# all informations contained in the array
+# "pid": "acanthus ilicifolius",
+# "display_pid": "Acanthus ilicifolius",
+# "alias": "acanthus ilicifolius",
+# "max_light_mmol": 2500,
+# "min_light_mmol": 1200,
+# "max_light_lux": 6000,
+# "min_light_lux": 1500,
+# "max_temp": 32,
+# "min_temp": 10,
+# "max_env_humid": 80,
+# "min_env_humid": 30,
+# "max_soil_moist": 60,
+# "min_soil_moist": 15,
+# "max_soil_ec": 2000,
+# "min_soil_ec": 350,
+# "image_url": "https://example.com/n/sdpo/b/plant-img/o/acanthus%20ilicifolius.jpg"

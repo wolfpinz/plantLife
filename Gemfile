@@ -32,6 +32,8 @@ gem 'devise'
 # Scraping
 gem 'nokogiri'
 gem 'open-uri'
+# plant api
+gem 'rest-client'
 
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass', '~> 5.6.1'
