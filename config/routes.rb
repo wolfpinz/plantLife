@@ -6,4 +6,5 @@ Rails.application.routes.draw do
     resources :plants, only: [:index]
     resources :my_plants, only: [:new, :create, :show, :edit, :update, :destroy]
   end
+  resources :plants, only: [:new, :create]
 end
