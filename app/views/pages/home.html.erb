@@ -6,9 +6,18 @@
 </div>
 
 <ul>
-  <li>
     <% @gardens.each do |garden| %>
-      <%= garden.name %>
+      <li>
+        <%= garden.name %>
+      </li>
     <% end %>
   </li>
 </ul>
+<h2>Notifications</h2>
+<% @my_plants.each do |p| %>
+  <% if p.last_watered %>
+      <p>
+        <%= p.nickname %>. last watered: <%= p.last_watered %>
+      </p>
+  <% end %>
+<% end %>

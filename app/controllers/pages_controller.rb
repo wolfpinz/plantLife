@@ -3,5 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @gardens = Garden.all
+    @my_plants = MyPlant.all
   end
 end
