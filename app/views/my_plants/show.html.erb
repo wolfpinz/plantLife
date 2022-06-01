@@ -3,3 +3,7 @@
 <p>name:<%= @my_plant.plant.common_name %></p>
 <p>nickname:<%= @my_plant.nickname %></p>
 <p>last watered: <%= @time.to_i %> days ago</p>
+<% if @time.to_i == -2 %>
+  <p>needs water</p>
+<% end %>
+<%= @my_plant.garden.user %>
