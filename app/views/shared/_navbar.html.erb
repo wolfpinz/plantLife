@@ -1,8 +1,8 @@
 <div class="navbar navbar-expand-sm navbar-light navbar">
-  <div class="container-fluid navbar-plantlife rounded-top"> <%# navbar to bottom %>
+  <div class="container-fluid navbar-plantlife rounded-top justify-content-center "> <%# navbar to bottom %>
 
-    <div class="d-flex justify-content-around text-center align-items-center plantlife-image">
-      <h2 class="text-center">PlantLife</h2>
+    <div class="d-flex plantlife-image">
+      <h2>PlantLife</h2>
       <%= image_tag "sprout.png" %>
     </div>
 
@@ -14,11 +14,11 @@
   <div class="container-fluid navbar-plantlife fixed-bottom rounded-top"> <%# navbar to bottom %>
 
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "home.png" %> <%# inserted home png %>
+      <%= image_tag "house.png" %> <%# inserted home png %>
     <% end %>
 
     <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "notification.png" %> <%# inserted bell png %>
+      <%= image_tag "alarm.png" %> <%# inserted bell png %>
     <% end %>
 
     <%= link_to "#", class: "navbar-brand" do %>
@@ -33,7 +33,7 @@
               <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownBtn">
-              <div class="dropdown-item" type="button"><% link_to destroy_user_session_path, method: :delete %>LogOut</div>
+              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
             </div>
           </div>
     <% else %>
