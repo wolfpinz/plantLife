@@ -23,6 +23,8 @@ class MyPlantsController < ApplicationController
 
   def show
     @my_plant = MyPlant.find(params[:id])
+    # raise
+    @time = @my_plant.last_watered - Date.today
   end
 
   private
@@ -36,6 +38,6 @@ class MyPlantsController < ApplicationController
   end
 
   def my_plant_params
-    params.require(:my_plant).permit(:nickname, :light_exposure, :photo, :plant_id)
+    params.require(:my_plant).permit(:nickname, :light_exposure, :photo, :last_watered, :plant_id)
   end
 end
