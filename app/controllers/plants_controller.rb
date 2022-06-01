@@ -1,21 +1,8 @@
 class PlantsController < ApplicationController
-  def new
-    @plant = Plant.new
-  end
+  skip_before_action :authenticate_user!, only: [ :index ]
 
-  def create
-    @plant = Plant.new(plant_params)
-
-    if @plant.save
-      redirect_to root_path
-    else
-      render :new
-    end
-  end
-
-  private
-
-  def plant_params
-    params.require(:plant).permit(:species, :common_name, :scientific_name, :water, :soil, :sun, :temperature)
+  def index
+    # display plants the user searched for
+    @plants = Plant.where(common_name: params[:query])
   end
 end
