@@ -1,16 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'nokogiri'
 require 'rest-client'
-require 'net/http'
-# seed
-# 1 user
+
 User.destroy_all
 puts "All Users destroyed"
 Garden.destroy_all
@@ -53,7 +44,11 @@ def create_plant(url)
   water = JSON.parse(plant_hash)["max_soil_moist"].to_s
   soil = JSON.parse(plant_hash)["max_soil_ec"].to_s
   scientific_name = JSON.parse(plant_hash)["display_pid"]
-  p Plant.create(common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
+  img = JSON.parse(plant_hash)["image_url"]
+  file = URI.open(img)
+  p plant = Plant.new(common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
+  plant.photo.attach(io: file, filename: "img", content_type: 'image/jpg')
+  p plant.save
 end
 plant_names.each do |p|
   url = "https://open.plantbook.io/api/v1/plant/detail/#{p}/".gsub(' ', '%20')
