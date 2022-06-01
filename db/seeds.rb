@@ -1,88 +1,73 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
-# seed
-# 1 user
+require 'nokogiri'
+require 'rest-client'
+
 User.destroy_all
+puts "All Users destroyed"
 Garden.destroy_all
+puts "All Gardens destroyed"
 MyPlant.destroy_all
+puts "All MyPlants destroyed"
 Plant.destroy_all
+puts "All Plants destroyed"
 Action.destroy_all
+puts "All Actions destroyed"
 
+plant_names = [
+  "monstera deliciosa",
+  "ficus lyrata",
+  "yucca recurvifolia",
+  "cylindropuntia leptocaulis",
+  "abutilon palmeri",
+  "acacia farnesiana",
+  "ficus lyrata",
+  "angelonia angustifolia",
+  "prunus triloba",
+  "laurentia axillaris",
+  "dryopteris bushiana",
+  "stenotaphrum helferi",
+  "ferocactus histrix",
+  "acer campestre",
+  "acer spicatum",
+  "celosia plumosa",
+  "dianthus plumarius",
+  "prunus mume",
+  "fern",
+  "monstera friedrichsthalii"
+]
 
-user = User.new(
-  first_name: "Wolf",
-  last_name: "Pinz",
-  email: "wolf@me.com",
-  password: "123456"
-)
-user.save!
-# 1 garden
-garden = Garden.new(
-  name: "My Garden",
-  user: user
-)
-garden.save
-
-# 1 plants
-# .string "species"
-#     t.string "common_name"
-#     t.string "scientific_name"
-#     t.string "water"
-#     t.string "soil"
-#     t.string "sun"
-#     t.string "temperature"
-plant1 = Plant.new(
-  species: "Kaktus",
-  common_name: "Monstera",
-  scientific_name: "Monstera whatever",
-  water: "viel",
-  soil: "gut",
-  sun: "geht",
-  temperature: "40"
-)
-
-plant2 = Plant.new(
-  species: "Baum",
-  common_name: "Ficus",
-  scientific_name: "Fikkifickus",
-  water: "sehr viel",
-  soil: "braun",
-  sun: "geht",
-  temperature: "41"
-)
-plant1.save
-plant2.save
-
-
-# 2 my_plants
-
-my_plant1 = MyPlant.new(
-  nickname: "Peter",
-  light_exposure: "doll",
-  garden: garden,
-  plant: plant1
-)
-my_plant2 = MyPlant.new(
-  nickname: "Frank",
-  light_exposure: "geht so",
-  garden: garden,
-  plant: plant2
-)
-my_plant1.save
-my_plant2.save
-
-# 1 action
-action = Action.new(
-  user: user,
-  my_plant: my_plant1,
-  action_type: "water this bitch",
-  frequency: 7,
-  date: Date.today
-)
-action.save
+def create_plant(url)
+  plant_hash = RestClient.get(url, {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"})
+  common_name = JSON.parse(plant_hash)["alias"]
+  temperature = JSON.parse(plant_hash)["max_temp"].to_s
+  light = JSON.parse(plant_hash)["max_light_lux"].to_s
+  water = JSON.parse(plant_hash)["max_soil_moist"].to_s
+  soil = JSON.parse(plant_hash)["max_soil_ec"].to_s
+  scientific_name = JSON.parse(plant_hash)["display_pid"]
+  img = JSON.parse(plant_hash)["image_url"]
+  file = URI.open(img)
+  p plant = Plant.new(common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
+  plant.photo.attach(io: file, filename: "img", content_type: 'image/jpg')
+  p plant.save
+end
+plant_names.each do |p|
+  url = "https://open.plantbook.io/api/v1/plant/detail/#{p}/".gsub(' ', '%20')
+  create_plant(url)
+end
+# all informations contained in the array
+# "pid": "acanthus ilicifolius",
+# "display_pid": "Acanthus ilicifolius",
+# "alias": "acanthus ilicifolius",
+# "max_light_mmol": 2500,
+# "min_light_mmol": 1200,
+# "max_light_lux": 6000,
+# "min_light_lux": 1500,
+# "max_temp": 32,
+# "min_temp": 10,
+# "max_env_humid": 80,
+# "min_env_humid": 30,
+# "max_soil_moist": 60,
+# "min_soil_moist": 15,
+# "max_soil_ec": 2000,
+# "min_soil_ec": 350,
+# "image_url": "https://example.com/n/sdpo/b/plant-img/o/acanthus%20ilicifolius.jpg"
