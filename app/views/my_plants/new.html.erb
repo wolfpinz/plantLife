@@ -5,5 +5,6 @@
   <%= f.input :nickname %>
   <%= f.input :light_exposure %>
   <%= f.input :photo, as: :file %>
+  <%= hidden_field_tag "plant_id", params[:plant_id] %>
   <%= f.button :submit, "Create Plant!", class: "btn btn-primary"%>
 <% end %>
