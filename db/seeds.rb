@@ -37,7 +37,7 @@ plant_names = [
 ]
 
 def create_plant(url)
-  plant_hash = RestClient.get(url, {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"})
+  plant_hash = RestClient.get(url, {:Authorization => "Bearer wET3kgA58wW7AEMlEA9R2Pcrd8bADz"})
   common_name = JSON.parse(plant_hash)["alias"]
   temperature = JSON.parse(plant_hash)["max_temp"].to_s
   light = JSON.parse(plant_hash)["max_light_lux"].to_s
