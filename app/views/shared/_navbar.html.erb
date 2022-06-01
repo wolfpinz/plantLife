@@ -1,4 +1,16 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+<div class="navbar navbar-expand-sm navbar-light navbar">
+  <div class="container-fluid navbar-plantlife rounded-top"> <%# navbar to bottom %>
+
+    <div class="d-flex justify-content-around text-center align-items-center plantlife-image">
+      <h2 class="text-center">PlantLife</h2>
+      <%= image_tag "sprout.png" %>
+    </div>
+
+  </div>
+</div>
+
+
+<div class="navbar-expand-sm navbar-light navbar">
   <div class="container-fluid navbar-plantlife fixed-bottom rounded-top"> <%# navbar to bottom %>
 
     <%= link_to "#", class: "navbar-brand" do %>
@@ -13,25 +25,22 @@
       <%= image_tag "gardening.png" %> <%# inserted bell png %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Log out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+
+    <% if user_signed_in? %>
+          <div class="dropup">
+            <button type="button" class="btn dropdown" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar" %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBtn">
+              <div class="dropdown-item" type="button"><% link_to destroy_user_session_path, method: :delete %>LogOut</div>
             </div>
-          </li>
-        <% else %>
-          <li class="nav-item">
-            <%= link_to "Login", new_user_session_path, class: "nav-link" %>
-          </li>
+          </div>
+    <% else %>
+        <%= link_to new_user_session_path, class: "navbar-brand" do %>
+          <%= image_tag "user.png" %> <%# inserted user png %>
         <% end %>
-      </ul>
-    </div>
+    <% end %>
+
   </div>
 </div>
