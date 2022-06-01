@@ -1,15 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
 require 'open-uri'
 require 'nokogiri'
 require 'rest-client'
-# seed
-# 1 user
+
 User.destroy_all
 puts "All Users destroyed"
 Garden.destroy_all
@@ -20,45 +12,48 @@ Plant.destroy_all
 puts "All Plants destroyed"
 Action.destroy_all
 puts "All Actions destroyed"
-# Plants Scraper
-# url = "https://pfaf.org/user/Plant.aspx?LatinName=Monstera+deliciosa"
-# html = URI.open(url)
-# doc = Nokogiri::HTML(html)
-# p doc.search("#ContentPlaceHolder1_lblCommanName").text.strip # gets common name
-# p doc.search("#ContentPlaceHolder1_lblFamily").text.strip # gets species
-# p doc.search("#ContentPlaceHolder1_lbldisplatinname").text.strip # gets scientific name
-# doc.search("#ContentPlaceHolder1_tblIcons img").each do |element|
-#   p  element.attribute("alt").value
-# end
 
-# Plant API
-# def plant_api_data
-#   ENV["plant_api"]
-# end
-# api_data = { key: plant_api_data }
-response = RestClient.get('https://open.plantbook.io/api/v1/plant/search?alias=acanthus%20ilicifolius', {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"}) # bearer private? alias=user imput ?
-# p response.body
-pid = JSON.parse(response)["results"].first["pid"].gsub(' ', '%20') # (' ', '%20') <== ersetzen des leerzeichens mit den richtigen url syntax
-plant_hash = RestClient.get("https://open.plantbook.io/api/v1/plant/detail/#{pid}/", {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"})
-puts "fetching plant name..."
-plant_name = JSON.parse(plant_hash)["alias"]
-puts "fetching max temp..."
-max_temp = JSON.parse(plant_hash)["max_temp"]
-puts "fetching min temp..."
-min_temp = JSON.parse(plant_hash)["min_temp"]
-puts "fetching max humidity..."
-max_humidity = JSON.parse(plant_hash)["max_env_humid"]
-puts "fetching min humidity..."
-min_humidity = JSON.parse(plant_hash)["min_env_humid"]
-puts "fetching max soil moisture..."
-max_soil_moist = JSON.parse(plant_hash)["max_soil_moist"]
-puts "fetching min soil moisture..."
-min_soil_moist = JSON.parse(plant_hash)["min_soil_moist"]
-puts "fetching img url..."
-image_url = JSON.parse(plant_hash)["image_url"]
+plant_names = [
+  "monstera deliciosa",
+  "ficus lyrata",
+  "yucca recurvifolia",
+  "cylindropuntia leptocaulis",
+  "abutilon palmeri",
+  "acacia farnesiana",
+  "ficus lyrata",
+  "angelonia angustifolia",
+  "prunus triloba",
+  "laurentia axillaris",
+  "dryopteris bushiana",
+  "stenotaphrum helferi",
+  "ferocactus histrix",
+  "acer campestre",
+  "acer spicatum",
+  "celosia plumosa",
+  "dianthus plumarius",
+  "prunus mume",
+  "fern",
+  "monstera friedrichsthalii"
+]
 
-# Plant.new(temperature:max_temp) <== plants atributes sav first Plants.new <== attach img then Plants.save
-
+def create_plant(url)
+  plant_hash = RestClient.get(url, {:Authorization => "Bearer F82ipHGEZmEhMpJPsJLIIZsbIP1oTU"})
+  common_name = JSON.parse(plant_hash)["alias"]
+  temperature = JSON.parse(plant_hash)["max_temp"].to_s
+  light = JSON.parse(plant_hash)["max_light_lux"].to_s
+  water = JSON.parse(plant_hash)["max_soil_moist"].to_s
+  soil = JSON.parse(plant_hash)["max_soil_ec"].to_s
+  scientific_name = JSON.parse(plant_hash)["display_pid"]
+  img = JSON.parse(plant_hash)["image_url"]
+  file = URI.open(img)
+  p plant = Plant.new(common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
+  plant.photo.attach(io: file, filename: "img", content_type: 'image/jpg')
+  p plant.save
+end
+plant_names.each do |p|
+  url = "https://open.plantbook.io/api/v1/plant/detail/#{p}/".gsub(' ', '%20')
+  create_plant(url)
+end
 # all informations contained in the array
 # "pid": "acanthus ilicifolius",
 # "display_pid": "Acanthus ilicifolius",
