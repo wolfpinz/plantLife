@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'nokogiri'
 require 'rest-client'
+require 'faker'
 
 User.destroy_all
 puts "All Users destroyed"
@@ -12,6 +13,16 @@ Plant.destroy_all
 puts "All Plants destroyed"
 Action.destroy_all
 puts "All Actions destroyed"
+
+garden_names = [
+  "outside",
+  "inside",
+  "office",
+  "terrace",
+  "bedroom",
+  "livingroom",
+  "bathroom"
+]
 
 plant_names = [
   "monstera deliciosa",
@@ -36,6 +47,8 @@ plant_names = [
   "monstera friedrichsthalii"
 ]
 
+User.create(email: "plant@life.com", password: "secret")
+
 def create_plant(url)
   plant_api_key = ENV['plant_api']
   plant_hash = RestClient.get(url, {:Authorization => "Bearer #{plant_api_key}"})
@@ -54,6 +67,13 @@ end
 plant_names.each do |p|
   url = "https://open.plantbook.io/api/v1/plant/detail/#{p}/".gsub(' ', '%20')
   create_plant(url)
+end
+
+3.times do
+  Garden.create(name: garden_names.sample, user: User.last)
+  5.times do
+    MyPlant.create(garden: Garden.last, plant: Plant.all.sample, nickname: Faker::Name.first_name)
+  end
 end
 # all informations contained in the array
 # "pid": "acanthus ilicifolius",

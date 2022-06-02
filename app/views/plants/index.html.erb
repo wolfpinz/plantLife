@@ -2,13 +2,13 @@
 
 <!-- [...] -->
 <%= form_tag garden_plants_path, method: :get do %>
-  <%= text_field_tag :query,
+<%= text_field_tag :query,
     params[:query],
     class: "form-control",
     placeholder: "Find a plant"
   %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
+   <%= submit_tag "Search", class: "btn btn-primary" %>
+ <% end %>
 <!-- the list of plants -->
 
 <% @plants.each do |plant| %>
