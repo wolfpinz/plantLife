@@ -27,6 +27,7 @@ class MyPlantsController < ApplicationController
     @time = @my_plant.last_watered - Date.today
   end
 
+
   private
 
   def set_garden

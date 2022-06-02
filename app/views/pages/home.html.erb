@@ -15,9 +15,22 @@
 </ul>
 <h2>Notifications</h2>
 <% @my_plants.each do |p| %>
-  <% if p.last_watered %>
+  <% if p.water? %>
+    <div style="border: 1px solid black">
+      <p><%= p.plant.common_name %> <%= p.nickname %></p>
+      <p><%= p.garden.name %></p>
+      <p><%= p.overdue %></p>
+    </div>
+  <% end %>
+<% end %>
+<!--
+<h2>All</h2>
+<% @my_plants.each do |p| %>
       <p>
         <%= p.nickname %>. last watered: <%= p.last_watered %>
       </p>
-  <% end %>
+      <p>
+        watered <%= p.days_ago %> days ago
+      </p>
 <% end %>
+-->

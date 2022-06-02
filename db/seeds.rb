@@ -81,15 +81,15 @@ end
 # "pid": "acanthus ilicifolius",
 # "display_pid": "Acanthus ilicifolius",
 # "alias": "acanthus ilicifolius",
-# "max_light_mmol": 2500,
-# "min_light_mmol": 1200,
-# "max_light_lux": 6000,
-# "min_light_lux": 1500,
+# "max_light_mmol": 2500,   'full sun'
+# "min_light_mmol": 1200,  'part shade'
+# "max_light_lux": 6000,   'full sun'
+# "min_light_lux": 1500,  'part shade'
 # "max_temp": 32,
 # "min_temp": 10,
 # "max_env_humid": 80,
 # "min_env_humid": 30,
-# "max_soil_moist": 60,
+# "max_soil_moist": 60, 'moist soil' -> 'every 7 days'
 # "min_soil_moist": 15,
 # "max_soil_ec": 2000,
 # "min_soil_ec": 350,
