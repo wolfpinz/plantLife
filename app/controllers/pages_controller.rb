@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   def home
     @gardens = Garden.all
     @my_plants = MyPlant.all
+    @garden = Garden.new
   end
 end
