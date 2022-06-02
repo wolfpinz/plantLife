@@ -4,7 +4,6 @@ class MyPlantsController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
 
   def new
-    # raise
     @my_plant = MyPlant.new
   end
 
@@ -23,10 +22,7 @@ class MyPlantsController < ApplicationController
 
   def show
     @my_plant = MyPlant.find(params[:id])
-    # raise
-    @time = @my_plant.last_watered - Date.today
   end
-
 
   private
 

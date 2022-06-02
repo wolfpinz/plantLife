@@ -3,6 +3,6 @@ class PagesController < ApplicationController
 
   def home
     @gardens = Garden.all
-    @my_plants = MyPlant.all
+    @my_plants = MyPlant.all.order(last_watered: :desc)
   end
 end
