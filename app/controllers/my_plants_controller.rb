@@ -1,10 +1,10 @@
 class MyPlantsController < ApplicationController
   before_action :set_garden, only: [ :new, :create, :show]
+  before_action :set_my_plant, only: [ :show, :water ]
   before_action :set_plant, only: [ :new, :create ]
   skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
 
   def new
-    # raise
     @my_plant = MyPlant.new
   end
 
@@ -22,13 +22,17 @@ class MyPlantsController < ApplicationController
   end
 
   def show
-    @my_plant = MyPlant.find(params[:id])
-    # raise
-    @time = @my_plant.last_watered - Date.today
+    # set_my_plant
   end
 
+  def water
+    # set_my_plant
+    @my_plant.update(last_watered: Date.today)
+    redirect_to :root
+  end
 
   private
+
 
   def set_garden
     @garden = Garden.find(params[:garden_id])
@@ -36,6 +40,10 @@ class MyPlantsController < ApplicationController
 
   def set_plant
     @plant = Plant.find(params[:plant_id])
+  end
+
+  def set_my_plant
+    @my_plant = MyPlant.find(params[:id])
   end
 
   def my_plant_params

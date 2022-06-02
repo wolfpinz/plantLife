@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
   def home
     @gardens = Garden.all
-    @my_plants = MyPlant.all
     @garden = Garden.new
+    @my_plants = MyPlant.all.order(:last_watered)
   end
 end

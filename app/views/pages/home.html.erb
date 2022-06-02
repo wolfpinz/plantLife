@@ -23,16 +23,45 @@
 </div>
 </div>
 
-<h2>Notifications</h2>
-<% @my_plants.each do |p| %>
-  <% if p.water? %>
-    <div style="border: 1px solid black">
-      <p><%= p.plant.common_name %> <%= p.nickname %></p>
-      <p><%= p.garden.name %></p>
-      <p><%= p.overdue %></p>
+<div class="container">
+  <div class="notification-container">
+    <h2 class="text-center pt-2">Notifications</h2>
+    <div class="d-flex justify-content-around">
+
+      <div class="" style="width: 90%">
+        <% @my_plants.each do |p| %>
+          <% if p.water? %>
+            <div class="notification-card">
+              <div class="d-flex align-items-center">
+                <div class="plant-avatar">
+                  <%= image_tag "pl.webp" %>
+                </div>
+
+                <div>
+                  <h6 class="mt-1"><%= p.nickname %></h6>
+                  <p><%= p.plant.common_name %></p>
+                  <p><%= p.garden.name %></p>
+                  <p><%= p.overdue %></p>
+                </div>
+              </div>
+
+              <div class="form-check">
+                <%= link_to water_my_plant_path(p), method: :patch do %>
+                  <input class="form-check-input" type="checkbox">
+                <% end %>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+
     </div>
-  <% end %>
-<% end %>
+  </div>
+</div>
+
+
+
+
 <!--
 <h2>All</h2>
 <% @my_plants.each do |p| %>
