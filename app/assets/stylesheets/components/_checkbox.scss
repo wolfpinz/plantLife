@@ -1,11 +1,14 @@
-.form-check-input {
-  width: 1.5em;
-  height: 1.5em;
+.form-check-input[type="checkbox"] {
+  width: 3em;
+  height: 3em;
   border: 1px solid #6BBE76;
   opacity: 60%;
+  border-radius: 50%;
 }
+
 
 
 .form-check {
   margin-right: 16px;
+  border-radius: 50%;
 }
