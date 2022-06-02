@@ -3,6 +3,7 @@ class GardensController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
 
   def show
+    @my_plants = @garden.my_plants
   end
 
   def new
