@@ -3,6 +3,6 @@ class PlantsController < ApplicationController
 
   def index
     # display plants the user searched for
-    @plants = Plant.all
+    @plants = Plant.where(common_name: params[:query])
   end
 end
