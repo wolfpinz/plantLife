@@ -8,4 +8,9 @@
   text-align: center;
 }
 
-// <button class="green-button">+</button>
+// add it to html with this code:
+
+// <%= link_to garden_plants_path(@garden) do %>
+//   <button class="green-button">+</button>
+//   <% end %>
+// </div>
