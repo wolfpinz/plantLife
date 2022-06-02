@@ -12,6 +12,7 @@
       <p><%= p.plant.common_name %> <%= p.nickname %></p>
       <p><%= p.garden.name %></p>
       <p><%= p.overdue %></p>
+      <p><%= link_to "done!", water_my_plant_path(p), method: :patch %></p>
     </div>
   <% end %>
 <% end %>
