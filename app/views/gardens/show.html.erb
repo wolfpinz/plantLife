@@ -3,5 +3,30 @@
 <div>
 
 <div id="add">
-  <%= link_to "+", garden_plants_path(@garden) %>
+<%= link_to garden_plants_path(@garden) do %>
+  <button class="green-button">+</button>
+  <% end %>
+</div>
+
+<div class="container" style="width: 90%">
+  <% @my_plants.each do |my_plant| %>
+
+    <div class="my-plant-card">
+      <h2><%= my_plant.nickname %></h2>
+      <div class="d-flex justify-content-between">
+        <%= image_tag "pl.webp", class: "plant-image" %>
+        <div class="flex-row pt-2">
+          <p class="plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
+          <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
+        </div>
+        <div class="pencil-icon align-self-end">
+          <%= image_tag "pencil.png" %>
+        </div>
+      </div>
+    </div>
+
+  <% end %>
+
+
+
 </div>

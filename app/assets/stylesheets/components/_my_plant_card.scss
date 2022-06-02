@@ -1,0 +1,23 @@
+.my-plant-card {
+  text-align: center;
+  box-shadow: 2px 2px 4px 0px lightgray;
+  font-size: 12px;
+  border-radius: 8px;
+  margin-top: 1em;
+}
+
+.plant-image {
+  width: 40%;
+  border-radius: 8px;
+  margin-right: 1em;
+}
+
+.my-plant-card h2 {
+  padding-top: 0.5em;
+  padding-bottom: 0.5em;
+}
+
+.plant-label {
+  font-style: italic;
+  text-align: start;
+}
