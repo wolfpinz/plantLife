@@ -72,9 +72,11 @@ end
 3.times do
   Garden.create(name: garden_names.sample, user: User.last)
   5.times do
-    MyPlant.create(garden: Garden.last, plant: Plant.all.sample, nickname: Faker::Name.first_name)
+    MyPlant.create(garden: Garden.last, plant: Plant.all.sample, nickname: Faker::Name.first_name, last_watered: rand((DateTime.now - 2.weeks)..DateTime.now))
   end
 end
+
+
 # all informations contained in the array
 # "pid": "acanthus ilicifolius",
 # "display_pid": "Acanthus ilicifolius",
