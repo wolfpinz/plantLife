@@ -13,18 +13,13 @@
 <div class="navbar-expand-sm navbar-light navbar">
   <div class="container-fluid navbar-plantlife fixed-bottom rounded-top"> <%# navbar to bottom %>
 
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "house.png" %> <%# inserted home png %>
     <% end %>
 
-    <%= link_to "#", class: "navbar-brand" do %>
-      <%= image_tag "alarm.png" %> <%# inserted bell png %>
-    <% end %>
-
-    <%= link_to "#", class: "navbar-brand" do %>
+    <%= link_to gardens_path, class: "navbar-brand" do %>
       <%= image_tag "gardening.png" %> <%# inserted bell png %>
     <% end %>
-
 
 
     <% if user_signed_in? %>
