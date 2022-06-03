@@ -20,7 +20,9 @@
           <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
         </div>
         <div class="pencil-icon align-self-end">
-          <%= image_tag "pencil.png" %>
+           <%= link_to root_path, class: "navbar-brand" do %>
+              <%= image_tag "pencil.png" %>
+           <% end %>
         </div>
       </div>
     </div>

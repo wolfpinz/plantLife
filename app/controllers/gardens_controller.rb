@@ -2,6 +2,10 @@ class GardensController < ApplicationController
   before_action :set_garden, only: [:show, :destroy]
   skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
 
+  def index
+    @gardens = Garden.where(user: current_user)
+  end
+
   def show
     @my_plants = @garden.my_plants
   end
