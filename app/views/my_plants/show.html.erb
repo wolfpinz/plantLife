@@ -13,19 +13,17 @@
     </div>
   </div>
 
-<div class="pt-2 my-plant-card">
-  <h4 class="pt-2">Needs:</h4>
-    <div class="d-flex justify-content-around p-2">
-      <div class="text-start">
-        <p><%= image_tag "drop.png", class: "needs-button" %> Water: <%= @my_plant.plant.water %></p>
-        <p><%= image_tag "plant.png", class: "needs-button" %> Soil: <%= @my_plant.plant.soil %></p>
+  <div class="pt-2 my-plant-card">
+    <h4 class="pt-2">Needs:</h4>
+      <div class="d-flex justify-content-around p-2">
+        <div class="text-start">
+          <p><%= image_tag "drop.png", class: "needs-button" %> Water: <%= @my_plant.plant.water %></p>
+          <p><%= image_tag "plant.png", class: "needs-button" %> Soil: <%= @my_plant.plant.soil %></p>
+        </div>
+        <div class="text-start">
+          <p><%= image_tag "sun.png", class: "needs-button" %> Sun: <%= @my_plant.plant.sun %></p>
+          <p><%= image_tag "thermometer.png", class: "needs-button" %> Temperature: <%= @my_plant.plant.temperature %></p>
+        </div>
       </div>
-      <div class="text-start">
-        <p><%= image_tag "sun.png", class: "needs-button" %> Sun: <%= @my_plant.plant.sun %></p>
-        <p><%= image_tag "thermometer.png", class: "needs-button" %> Temperature: <%= @my_plant.plant.temperature %></p>
-      </div>
-    </div>
-</div>
-
-
+  </div>
 </div>
