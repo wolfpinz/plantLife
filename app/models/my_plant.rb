@@ -15,6 +15,6 @@ class MyPlant < ApplicationRecord
 
   def overdue
     overdue = days_ago - 7
-    overdue <= 1 ? " " : "#{overdue} days overdue"
+    overdue <= 1 ? "due today" : "#{overdue} days overdue"
   end
 end

@@ -14,7 +14,7 @@
     <div class="my-plant-card">
       <h2><%= my_plant.nickname %></h2>
       <div class="d-flex justify-content-between">
-        <%= image_tag "pl.webp", class: "plant-image" %>
+        <%= cl_image_tag my_plant.plant.photo.key, class: "plant-image" %>
         <div class="flex-row pt-2">
           <p class="plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
           <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
