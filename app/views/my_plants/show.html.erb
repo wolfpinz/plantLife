@@ -2,11 +2,16 @@
 
 
 
-
-
+<% if @my_plant.photo.present?  %>
+  <%= cl_image_tag @my_plant.photo.key, height: 300, width: 400, crop: :fill %>
+<% else %>
+  <%= cl_image_tag @my_plant.plant.photo.key, height: 300, width: 400, crop: :fill %>
+<% end %>
 <p><%= @my_plant.nickname %></p>
 <p><%= @my_plant.plant.common_name %></p>
 <p>last watered: <%= @my_plant.days_ago %> days ago</p>
 <%= @my_plant.water? %>
 <%= @my_plant.last_watered %>
 <% @my_plant.garden.user %>
+<label for="formFileMultiple" class="form-label">Upload done!</label>
+<input class="form-control" type="file" id="formFileMultiple" multiple />
