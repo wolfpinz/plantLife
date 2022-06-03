@@ -47,7 +47,11 @@
 
               <div class="form-check">
                 <%= link_to water_my_plant_path(p), method: :patch do %>
-                  <input class="form-check-input" type="checkbox" checked>
+                  <input  class="form-check-input"
+                          type="checkbox" checked
+                          data-controller="notification"
+                          data-action="click->notification#toggleStyle"
+                          data-notification-target="input">
                 <% end %>
               </div>
             </div>
