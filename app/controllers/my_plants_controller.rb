@@ -8,6 +8,18 @@ class MyPlantsController < ApplicationController
     @my_plant = MyPlant.new
   end
 
+  def edit
+    @my_plant = MyPlant.find(params[:id])
+    @garden = Garden.find(params[:garden_id])
+  end
+
+  def update
+    @my_plant = MyPlant.find(params[:id])
+    @my_plant.update(my_plant_params)
+    @garden = Garden.find(params[:garden_id])
+    redirect_to garden_path(@garden)
+  end
+
   def create
     @my_plant = MyPlant.new(my_plant_params)
     @garden = Garden.find(params[:garden_id])
