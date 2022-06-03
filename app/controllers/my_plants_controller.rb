@@ -27,7 +27,7 @@ class MyPlantsController < ApplicationController
     @my_plant.plant = Plant.find(params[:plant_id])
     # raise
     if @my_plant.save
-      redirect_to garden_my_plant_path(@garden, @my_plant)
+      redirect_to garden_path(@garden)
     else
       render :new
     end

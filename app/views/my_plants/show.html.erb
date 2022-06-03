@@ -1,6 +1,12 @@
 <div class="container">
   <div class="d-flex my-plant-card mb-3">
-      <%= image_tag "pl.webp", class: "plant-image" %>
+    <% if @my_plant.photo.present?  %>
+      <%= cl_image_tag @my_plant.photo.key, height: 300, width: 400, crop: :fill %>
+    <% else %>
+      <%= cl_image_tag @my_plant.plant.photo.key, height: 300, width: 400, crop: :fill %>
+    <% end %>
+    
+    #<%= image_tag "pl.webp", class: "plant-image" %>
     <div class="text-start">
       <h2><%= @my_plant.nickname %></h2>
       <p><%= @my_plant.plant.common_name.upcase %> // <%= @my_plant.plant.scientific_name.upcase %></p>
@@ -13,6 +19,8 @@
     </div>
   </div>
 
+<label class="form-label" for="customFile">Saved</label>
+<input type="file" class="form-control" id="customFile" />
   <div class="pt-2 my-plant-card">
     <h4 class="pt-2">Needs:</h4>
       <div class="d-flex justify-content-around p-2">
