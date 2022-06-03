@@ -28,7 +28,7 @@ class MyPlantsController < ApplicationController
   def water
     # set_my_plant
     @my_plant.update(last_watered: Date.today)
-    redirect_to :root
+    # redirect_to :root
   end
 
   private

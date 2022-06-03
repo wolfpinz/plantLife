@@ -34,7 +34,7 @@
             <div class="notification-card">
               <div class="d-flex align-items-center">
                 <div class="plant-avatar">
-                  <%= image_tag "pl.webp" %>
+                  <%= cl_image_tag p.plant.photo.key, height: 300, width: 400, crop: :fill %>
                 </div>
 
                 <div>
