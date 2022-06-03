@@ -41,7 +41,11 @@
                   <h6 class="mt-1"><%= p.nickname %></h6>
                   <p><%= p.plant.common_name %></p>
                   <p><%= p.garden.name %></p>
-                  <p><%= p.overdue %></p>
+                  <% if p.overdue == "due today" %>
+                    <p class="today"><%= p.overdue %></p>
+                  <% elsif %>
+                    <p class="overdue"><%= p.overdue %></p>
+                  <% end %>
                 </div>
               </div>
 
