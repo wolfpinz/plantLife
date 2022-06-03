@@ -1,0 +1,12 @@
+<div class="container" style="width: 90%">
+  <h2> My Gardens <h2>
+
+  <% @gardens.each do |garden| %>
+    <div class="my-plant-card py-4 my-2">
+      <%= link_to garden.name, garden_path(garden) %>
+      <% garden.my_plants.each do |my_plant| %>
+        <%= my_plant.nickname%>
+      <%end%>
+    </div>
+    <%end%>
+</div>
