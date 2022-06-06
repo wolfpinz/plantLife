@@ -23,6 +23,15 @@
 </div>
 </div>
 
+
+<%# Progress Bar %>
+<div class="container">
+    <div class="progress">
+      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+    </div>
+</div>
+
+
 <div class="container">
   <div class="notification-container">
     <h2 class="text-center pt-2">Notifications</h2>
@@ -55,7 +64,8 @@
                           type="checkbox" checked
                           data-controller="notification"
                           data-action="click->notification#toggleStyle"
-                          data-notification-target="input">
+                          data-notification-target="input",
+                          data-progress="25">
                 <% end %>
               </div>
             </div>
