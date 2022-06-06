@@ -1,10 +1,8 @@
-<div class="text-center">
-  <h2> <%= @garden.name %> </h2>
-<div>
 
-<div id="add">
-<%= link_to garden_plants_path(@garden) do %>
-  <button class="green-button"><h1>+</h1></button>
+<div id="add" class="d-flex justify-content-center align-items-center">
+  <h2 class="text-center align-middle m-0"> <%= @garden.name %> </h2>
+  <%= link_to garden_plants_path(@garden), class: "mx-2" do %>
+    <button class="green-button align-middle"><h1>+</h1></button>
   <% end %>
 </div>
 
