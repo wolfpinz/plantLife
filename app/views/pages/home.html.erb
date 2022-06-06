@@ -38,7 +38,10 @@
                 </div>
 
                 <div>
-                  <h6 class="mt-1"><%= p.nickname %></h6>
+                  <div class="d-flex">
+                    <h6 class="mt-1"><%= p.nickname %></h6>
+                    <%= image_tag "drop.png", class: "water-button mx-1" %>
+                  </div>
                   <p><%= p.plant.common_name %></p>
                   <p><%= p.garden.name %></p>
                   <% if p.overdue == "due today" %>
