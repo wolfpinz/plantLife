@@ -8,7 +8,7 @@ Bundler.require(*Rails.groups)
 
 module PlantLife
   class Application < Rails::Application
-    config.generators do |generate|
+    config.action_view.embed_authenticity_token_in_remote_forms = config.generators do |generate|
       generate.assets false
       generate.helper false
       generate.test_framework :test_unit, fixture: false

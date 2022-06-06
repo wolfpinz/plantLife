@@ -1,24 +1,17 @@
 import { Controller } from "@hotwired/stimulus"
 
-class ProgressBar {
-  constructor(progressbar, targets){
-    this.progressBar = progressbar;
-    this.targets = targets;
-    this.progress = 0;
+export default class extends Controller {
+  static targets = [ "progressbar", "check"]
+
+  connect() {
+    console.log(this.progressbarTarget)
   }
 
-  init(){
-    const context = this;
-    this.targets.forEach(function(target){
-      target.addEventListener('click', function(e){
-        context.changeProgress(e);
-      });
-    });
+  changeProgress() {
+    const opaced = this.checkTargets.filter((checkbox) => { return checkbox.classList.contains("opacity-100") })
+    const progressValue = opaced.length/this.checkTargets.length * 100
+    this.progressbarTarget.style.width = `${progressValue}%`;
+    this.progressbarTarget.ariaValueNow = `${progressValue}`;
   }
 
-  changeProgress(e){
-    this.progress = e.target.getAttribute('data-progress');
-    this.progressBar.style.width = this.progress + '%';
-    this.progressBar.setAttribute('aria-valuenow', this.progress);
-  }
 }

@@ -25,14 +25,11 @@
 
 
 <%# Progress Bar %>
-<div class="container">
-    <div class="progress">
-      <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-    </div>
-</div>
+<div class="container" data-controller="progressbar">
+  <div class="progress">
+    <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-progressbar-target="progressbar"></div>
+  </div>
 
-
-<div class="container">
   <div class="notification-container">
     <h2 class="text-center pt-2">Notifications</h2>
     <div class="d-flex justify-content-around">
@@ -59,13 +56,13 @@
               </div>
 
               <div class="form-check">
-                <%= link_to water_my_plant_path(p), method: :patch do %>
+                <%= link_to water_my_plant_path(p), method: :patch, remote: true do %>
                   <input  class="form-check-input"
                           type="checkbox" checked
                           data-controller="notification"
-                          data-action="click->notification#toggleStyle"
-                          data-notification-target="input",
-                          data-progress="25">
+                          data-action="click->notification#toggleStyle click->progressbar#changeProgress"
+                          data-notification-target="input"
+                          data-progressbar-target="check">
                 <% end %>
               </div>
             </div>
