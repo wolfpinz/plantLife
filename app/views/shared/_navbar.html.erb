@@ -14,17 +14,17 @@
   <div class="container-fluid navbar-plantlife fixed-bottom rounded-top"> <%# navbar to bottom %>
 
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "house.png" %> <%# inserted home png %>
+     <i class="fas fa-home"></i>
     <% end %>
 
     <%= link_to gardens_path, class: "navbar-brand" do %>
-      <%= image_tag "gardening.png" %> <%# inserted bell png %>
+      <i class="fas fa-seedling"></i>
     <% end %>
 
 
     <% if user_signed_in? %>
           <div class="dropup">
-            <button type="button" class="btn dropdown" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
+            <button type="button" class="btn dropdown p-0" id="dropdownBtn" data-bs-toggle="dropdown" aria-expanded="false">
               <%= image_tag "https://avatars.githubusercontent.com/u/102250825?v=4", class: "avatar" %>
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownBtn">

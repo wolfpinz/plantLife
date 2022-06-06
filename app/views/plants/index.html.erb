@@ -1,7 +1,7 @@
-<h1>Search for a plant</h1>
+<h1 class="text-center">Search for a plant</h1>
 
 <!-- [...] -->
-<%= form_tag garden_plants_path, method: :get do %>
+<%= form_tag garden_plants_path, class: "d-flex m-3", method: :get do %>
 <%= text_field_tag :query,
     params[:query],
     class: "form-control",
@@ -9,10 +9,13 @@
   %>
    <%= submit_tag "Search", class: "btn btn-primary" %>
  <% end %>
+
 <!-- the list of plants -->
 
 <% @plants.each do |plant| %>
-  <%= cl_image_tag plant.photo.key, height: 300, width: 400, crop: :fill %>
-  <p><%= plant.common_name %></p>
-  <%= link_to "Add plant", new_garden_my_plant_path(plant_id: plant.id) %>
+  <div class="container">
+    <%= cl_image_tag plant.photo.key, height: 300, width: 400, crop: :fill, class: "plant_search_thumbnail" %>
+    <p><%= plant.common_name %></p>
+    <%= link_to "Add plant", new_garden_my_plant_path(plant_id: plant.id) %>
+  </div>
 <% end %>
