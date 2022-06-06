@@ -1,9 +1,18 @@
-
 <%# button for adding a new garden (missing link) %>
 <div class="d-flex justify-content-around">
-  <h2 class=""> Add a new garden</h2>
+  <h3 class=""> Add new garden</h3>
   <button class="green-button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
-
+</div>
+ <%# Displaying all gardens %>
+<div class="d-flex justify-content-center">
+  <% @garden_first%>
+    <div class="home-garden-card">
+      <%= link_to @garden_first.name, garden_path(@garden_first) %>
+      <% @garden_first.my_plants.each do |my_plant| %>
+        <%= my_plant.nickname%>
+      <%end%>
+    </div>
+</div>
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
