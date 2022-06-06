@@ -1,10 +1,12 @@
 
 <%# button for adding a new garden (missing link) %>
 <div class="d-flex justify-content-around">
+
   <div class="d-flex justify-content-center align-items-center">
     <h2 class="text-center m-0"> Add a new garden</h2>
     <button class="green-button mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>+</h1></button>
   </div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -24,6 +26,19 @@
     </div>
   </div>
   </div>
+
+<div class="container" data-controller="progressbar">
+
+  <div class="notification-container">
+    <h2 class="text-center px-2">Notifications</h2>
+
+<%# Progress Bar %>
+    <div class="progress mx-3 my-3" style="width: 90%">
+      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-progressbar-target="progressbar"></div>
+    </div>
+
+<%# notifications %>
+    <div class="d-flex justify-content-around">
 
 
   <div class="container" data-controller="progressbar">
@@ -60,6 +75,7 @@
                   </div>
                 </div>
 
+
                 <div class="form-check">
                   <%= link_to water_my_plant_path(p), method: :patch, remote: true do %>
                     <input  class="form-check-input"
@@ -71,6 +87,7 @@
                             data-progressbar-target="check">
                   <% end %>
                 </div>
+
               </div>
             <% end %>
           <% end %>
