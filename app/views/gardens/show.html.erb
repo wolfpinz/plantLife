@@ -11,21 +11,27 @@
 <div class="container" style="width: 90%">
   <% @my_plants.each do |my_plant| %>
 
-    <div class="my-plant-card">
-      <h2><%= my_plant.nickname %></h2>
-      <div class="d-flex justify-content-between">
-        <%= cl_image_tag my_plant.plant.photo.key, class: "plant-image" %>
-        <div class="flex-row pt-2">
-          <p class="plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
-          <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
-        </div>
-        <div class="pencil-icon align-self-end">
-           <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "navbar-brand" do %>
-              <%= image_tag "pencil.png" %>
-           <% end %>
+    <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "text-decoration-none" do %>
+      <div class="my-plant-card">
+        <% if my_plant.nickname.empty? %>
+          <h2><%= my_plant.plant.scientific_name %></h2>
+        <% else %>
+          <h2><%= my_plant.nickname %></h2>
+        <% end %>
+        <div class="d-flex justify-content-between">
+          <%= cl_image_tag my_plant.plant.photo.key, class: "plant-image" %>
+          <div class="flex-row pt-2">
+            <p class="plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
+            <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
+          </div>
+          <div class="pencil-icon align-self-end">
+            <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "navbar-brand" do %>
+                <%= image_tag "pencil.png" %>
+            <% end %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
   <% end %>
 
