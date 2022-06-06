@@ -13,5 +13,4 @@ export default class extends Controller {
     this.progressbarTarget.style.width = `${progressValue}%`;
     this.progressbarTarget.ariaValueNow = `${progressValue}`;
   }
-
 }
