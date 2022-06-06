@@ -12,8 +12,13 @@
 }
 
 .navbar-plantlife {
-  // margin-top: 40px;
+
   justify-content: space-between;
   background: white;
   box-shadow: 2px -2px 6px lightgrey;
 }
+
+// .navbar-plantlife::before {
+//   height: 60px;
+//   content: "";
+// }
