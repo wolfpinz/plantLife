@@ -6,6 +6,6 @@ class RemoveColumsFromPlants < ActiveRecord::Migration[6.1]
     remove_column :plants, :water, :string
     remove_column :plants, :soil, :string
     remove_column :plants, :sun, :string
-    remove_column :plants, :tempmax, :string
+    remove_column :plants, :temperature, :string
   end
 end
