@@ -1,12 +1,9 @@
 
-<div id="add" class="d-flex justify-content-center align-items-center">
-  <h2 class="text-center align-middle m-0"> <%= @garden.name %> </h2>
-  <%= link_to garden_plants_path(@garden), class: "mx-2" do %>
-    <button class="green-button align-middle"><h1>+</h1></button>
-  <% end %>
-</div>
+
 
 <div class="container justify-content-around" style="width: 90%">
+
+  <h1 class="align-middle"> <%= @garden.name %> </h1>
   <% @my_plants.each do |my_plant| %>
     <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "d-flex text-decoration-none linked-plant-cards" do %>
 
@@ -30,5 +27,10 @@
         </div>
       </div>
     <% end %>
+  <% end %>
+  <%= link_to garden_plants_path(@garden), class: "mx-2" do %>
+    <button class="green-button mx-2 sticky-btn">
+      +
+    </button>
   <% end %>
 </div>

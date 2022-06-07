@@ -21,7 +21,7 @@
         <div class="carousel">
             <% garden.my_plants.each do |p| %>
               <div class="my-plant-card-horizontal">
-                <%= cl_image_tag p.plant.photo.key, class: "plant-image" %>
+                <%= cl_image_tag p.photo.key, class: "plant-image" %>
                 <% if p.nickname.empty? %>
                   <p><%= p.plant.common_name %></p>
                 <% else %>
@@ -61,5 +61,24 @@
 
     </div>
   <% end %>
-
+  <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="green-button mx-2 sticky-btn">
+    +
+  </button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Please enter your garden name:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @garden do |f|%>
+            <%= f.input :name %>
+            <%= f.button :submit, class:"btn btn-primary" %>
+          <% end %>
+      </div>
+    </div>
+  </div>
+  </div>
 </div>

@@ -21,7 +21,7 @@
             <div class="col-4">
               <%= my_plant.nickname%>
             <div class="plant-avatar">
-                <%= cl_image_tag my_plant.plant.photo.key, height: 280, width: 200, crop: :fill %>
+                <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill %>
             </div>
             </div>
             <%end%>
@@ -67,7 +67,7 @@
               <div class="notification-card">
                 <div class="d-flex align-items-center">
                   <div class="plant-avatar">
-                    <%# <%= cl_image_tag p.plant.photo.key, height: 300, width: 400, crop: :fill %>
+                    <%= cl_image_tag p.photo.key, height: 300, width: 400, crop: :fill %>
                   </div>
 
                   <div>
@@ -103,16 +103,3 @@
       </div>
     </div>
 </div>
-
-
-<!--
-<h2>All</h2>
-<% @my_plants.each do |p| %>
-      <p>
-        <%= p.nickname %>. last watered: <%= p.last_watered %>
-      </p>
-      <p>
-        watered <%= p.days_ago %> days ago
-      </p>
-<% end %>
--->
