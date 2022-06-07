@@ -3,10 +3,8 @@
   <h3 class=""> Add new garden</h3>
   <button class="green-button" data-bs-toggle="modal" data-bs-target="#exampleModal">+</button>
 </div>
+
  <%# Displaying all gardens %>
-<div class="d-flex justify-content-center">
-</div>
-<div data-controller="nav">
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <% @gardens.each do |garden| %>
       <li class="nav-item">
@@ -31,18 +29,23 @@
   </div>
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Please enter your garden name:</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Please enter your garden name:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <%= simple_form_for @garden do |f|%>
+            <%= f.input :name %>
+            <%= f.button :submit, class:"btn btn-primary" %>
+          <% end %>
       </div>
     </div>
   </div>
   </div>
-
 <div class="container" data-controller="progressbar">
 
   <div class="notification-container">
