@@ -17,7 +17,7 @@
 
           <div class="pt-2 lh-sm">
             <% if my_plant.nickname.empty? %>
-              <h2><%= my_plant.plant.scientific_name %></h2>
+              <h2><%= my_plant.plant.common_name %></h2>
             <% else %>
               <h2><%= my_plant.nickname %></h2>
             <% end %>
@@ -26,13 +26,7 @@
             <p class="my-plant-label">Name: <%= my_plant.plant.common_name %></p>
           </div>
 
-          <div class="d-flex">
-            <div class="pencil-icon">
-              <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "" do %>
-                  <%= image_tag "pencil.png" %>
-              <% end %>
-            </div>
-          </div>
+
         </div>
       </div>
     <% end %>
