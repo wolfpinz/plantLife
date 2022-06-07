@@ -5,46 +5,61 @@
     My Gardens
   <h1>
   <div class="d-flex garden-meta-info">
-    <div><%= @garden_count %> gardens</div>
-    <div><%= @my_plants_count %> plants</div>
-    <div>4 to-do's</div>
+    <div class="mr-3">
+      <p class="analytics"><%= @garden_count %></p>
+      <p>gardens</p>
+    </div>
+    <div class="ml-3">
+      <p class="analytics"><%= @my_plants_count %></p>
+      <p>plants</p>
+    </div>
   </div>
 
   <% @gardens.each do |garden| %>
-  <div class="my-5">
-      <!-- Plant Images Carousel -->
-      <div class="carousel">
-          <% garden.my_plants.each do |p| %>
-            <div class="my-plant-card-horizontal">
-              <%= cl_image_tag p.plant.photo.key, class: "plant-image" %>
-              <% if p.nickname.empty? %>
-                <p><%= p.plant.common_name %></p>
-              <% else %>
-                <p><%= p.nickname %></p>
-              <% end %>
-            </div>
-          <% end %>
-      </div>
-
-      <!-- Garden Info -->
-      <div class="d-flex justify-content-between">
-        <div>
-          <%= link_to garden_path(garden) do %>
-          <h2><%= garden.name %></h2>
-          <% end %>
-          <p>bla</p>
+    <div class="my-5">
+        <!-- Plant Images Carousel -->
+        <div class="carousel">
+            <% garden.my_plants.each do |p| %>
+              <div class="my-plant-card-horizontal">
+                <%= cl_image_tag p.plant.photo.key, class: "plant-image" %>
+                <% if p.nickname.empty? %>
+                  <p><%= p.plant.common_name %></p>
+                <% else %>
+                  <p><%= p.nickname %></p>
+                <% end %>
+              </div>
+            <% end %>
         </div>
-        <p class="flex-end">blub</p>
-      </div>
 
-    <% end %>
-  </div>
+        <!-- Garden Info -->
+        <div class="d-flex justify-content-between">
+          <div>
+            <%= link_to garden_path(garden) do %>
+            <h2><%= garden.name %></h2>
+            <% end %>
+            <p><%= garden.my_plants.count %> plants</p>
+          </div>
+          <div class="flex-end">
+            <% garden.my_plants.each do |p| %>
+              <% if p.water? %>
+                <% @count += 1 %>
+              <% else %>
+                <% @count += 0 %>
+              <% end %>
+            <% end %>
+
+            <p>
+              <% if @count == 1 %>
+                <%= @count %> to-do
+              <% else %>
+                <%= @count %> to-do's
+              <% end %>
+            </p>
+
+          </div>
+        </div>
+
+    </div>
+  <% end %>
 
 </div>
-
-    <%# <div class="my-plant-card py-4 my-2"> %>
-      <%#<%= link_to garden.name, garden_path(garden) %>
-      <%#<% garden.my_plants.each do |my_plant| %>
-        <%#<%= my_plant.nickname%>
-      <%#<%end%>
-    <%#</div>

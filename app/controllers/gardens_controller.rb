@@ -6,6 +6,8 @@ class GardensController < ApplicationController
     @gardens = Garden.where(user: current_user)
     @garden_count = @gardens.count
     @my_plants_count = my_plants_count
+    @count = 0
+    # @to_do_count = count_to_dos
   end
 
   def show
@@ -31,6 +33,21 @@ class GardensController < ApplicationController
   end
 
   private
+
+  # def count_to_dos
+  #   @gardens = Garden.where(user: current_user)
+  #   @my_plants = @garden.my_plants
+  #   i = 0
+  #   count = 0
+  #   @my_plants.each do |plant|
+  #     if plant.water?
+  #       count += 1
+  #     else
+  #       next
+  #     end
+  #   end
+  #   return count
+  # end
 
   def my_plants_count
     @gardens = Garden.where(user: current_user)
