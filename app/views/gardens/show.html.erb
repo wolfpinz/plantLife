@@ -1,34 +1,40 @@
-<div class="text-center">
-  <h2> <%= @garden.name %> </h2>
-<div>
 
-<div id="add">
-<%= link_to garden_plants_path(@garden) do %>
-  <button class="green-button">+</button>
+<div id="add" class="d-flex justify-content-center align-items-center">
+  <h2 class="text-center align-middle m-0"> <%= @garden.name %> </h2>
+  <%= link_to garden_plants_path(@garden), class: "mx-2" do %>
+    <button class="green-button align-middle"><h1>+</h1></button>
   <% end %>
 </div>
 
-<div class="container" style="width: 90%">
+<div class="container justify-content-around" style="width: 90%">
   <% @my_plants.each do |my_plant| %>
+    <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "d-flex text-decoration-none linked-plant-cards" do %>
 
-    <div class="my-plant-card">
-      <h2><%= my_plant.nickname %></h2>
-      <div class="d-flex justify-content-between">
-        <%= cl_image_tag my_plant.plant.photo.key, class: "plant-image" %>
-        <div class="flex-row pt-2">
-          <p class="plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
-          <p class="plant-label">Name: <%= my_plant.plant.common_name %></p>
-        </div>
-        <div class="pencil-icon align-self-end">
-           <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "navbar-brand" do %>
-              <%= image_tag "pencil.png" %>
-           <% end %>
+      <div class="my-plant-card">
+        <div class="d-flex justify-content-center">
+
+          <%= cl_image_tag my_plant.plant.photo.key, class: "plant-image" %>
+
+          <div class="pt-2 lh-sm">
+            <% if my_plant.nickname.empty? %>
+              <h2><%= my_plant.plant.scientific_name %></h2>
+            <% else %>
+              <h2><%= my_plant.nickname %></h2>
+            <% end %>
+
+            <p class="my-plant-label">Light Exposure: <%= my_plant.light_exposure %></p>
+            <p class="my-plant-label">Name: <%= my_plant.plant.common_name %></p>
+          </div>
+
+          <div class="d-flex">
+            <div class="pencil-icon">
+              <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "" do %>
+                  <%= image_tag "pencil.png" %>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-
+    <% end %>
   <% end %>
-
-
-
 </div>

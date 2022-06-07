@@ -1,5 +1,6 @@
 .my-plant-card {
   text-align: center;
+  text-decoration: none;
   box-shadow: 2px 2px 4px 0px lightgray;
   font-size: 12px;
   border-radius: 8px;
@@ -11,14 +12,25 @@
   border-radius: 8px;
   margin-right: 1em;
   object-fit: cover;
+  margin: 1em;
+  box-shadow: 2px 2px 4px 0px lightgray;
 }
 
 .my-plant-card h2 {
-  padding-top: 0.5em;
+  text-align: start;
+  // padding-top: 0.5em;
   padding-bottom: 0.5em;
+  text-decoration: none;
+  margin: 0em;
 }
 
-.plant-label {
+.my-plant-label {
+  text-decoration: none;
   font-style: italic;
   text-align: start;
+  margin: 0em;
+}
+
+.linked-plant-cards {
+  color: black;
 }

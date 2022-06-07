@@ -4,6 +4,6 @@ export default class extends Controller {
   static targets = [ "input" ]
 
   toggleStyle() {
-    this.element.classList.add("opacity-100")
+    this.element.classList.toggle("opacity-100")
   }
 }
