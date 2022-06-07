@@ -67,12 +67,12 @@
               <div class="notification-card">
                 <div class="d-flex align-items-center">
                   <div class="plant-avatar">
-                    <%= cl_image_tag p.plant.photo.key, height: 300, width: 400, crop: :fill %>
+                    <%# <%= cl_image_tag p.plant.photo.key, height: 300, width: 400, crop: :fill %>
                   </div>
 
                   <div>
                     <h6 class="mt-1"><%= p.nickname %></h6>
-                    <p><%= p.plant.common_name %></p>
+                    <p><%= p.plant.common %></p>
                     <p><%= p.garden.name %></p>
                     <% if p.overdue == "due today" %>
                       <p class="today"><%= p.overdue %></p>
