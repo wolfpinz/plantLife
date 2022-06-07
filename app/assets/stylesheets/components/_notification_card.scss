@@ -7,8 +7,8 @@
   align-items: center;
   justify-content: space-between;
   line-height: 4px;
-  // background-color: #d5dfc5;
-  border: 1px #d5dfc5 solid;
+  // background-color: $final-green;
+  border: 1px $final-green solid;
 }
 
 .notification-container {
@@ -18,7 +18,7 @@
   border-radius: 8px;
   margin-top: 1em;
   padding-bottom: 1em;
-  // background-color: #d5dfc5;
+  // background-color: $final-green;
 }
 
 .plant-avatar img {

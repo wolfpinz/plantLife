@@ -1,9 +1,9 @@
 <div class="container">
-  <div class="d-flex my-plant-card mb-3">
+  <div class="my-plant-card mb-3">
     <% if @my_plant.photo.present?  %>
-      <%= cl_image_tag @my_plant.photo.key, class: "plant-image" %>
+      <%= cl_image_tag @my_plant.photo.key, class: "my-plant-show" %>
     <% else %>
-      <%= cl_image_tag @my_plant.plant.photo.key, class: "plant-image" %>
+      <%= cl_image_tag @my_plant.plant.photo.key, class: "my-plant-show" %>
     <% end %>
 
     <div class="text-start">
@@ -13,8 +13,8 @@
       <p>Does <%= @my_plant.nickname %> need water? <%= @my_plant.water? %></p>
     </div>
 
-    <div class="pencil-icon align-self-start">
-      <%= image_tag "pencil.png" %>
+    <div class="align-self-start">
+      <button><%= link_to "Edit this plant", edit_garden_my_plant_path %></button>
     </div>
   </div>
 
