@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_140445) do
+ActiveRecord::Schema.define(version: 2022_06_06_151436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -76,15 +76,17 @@ ActiveRecord::Schema.define(version: 2022_06_01_140445) do
   end
 
   create_table "plants", force: :cascade do |t|
-    t.string "species"
-    t.string "common_name"
-    t.string "scientific_name"
-    t.string "water"
-    t.string "soil"
-    t.string "sun"
-    t.string "temperature"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "latin"
+    t.string "family"
+    t.string "origin"
+    t.string "climate"
+    t.string "ideallight"
+    t.string "watering"
+    t.string "common"
+    t.string "tempmax"
+    t.string "tempmin"
   end
 
   create_table "users", force: :cascade do |t|
