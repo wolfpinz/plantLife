@@ -49,6 +49,7 @@ garden_names = [
 
 User.create(email: "plant@life.com", password: "secret")
 
+
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
 #   plant_hash = RestClient.get(url, {:Authorization => "Bearer #{plant_api_key}"})

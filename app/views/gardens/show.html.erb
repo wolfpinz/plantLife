@@ -26,13 +26,7 @@
             <p class="my-plant-label">Name: <%= my_plant.plant.common %></p>
           </div>
 
-          <div class="d-flex">
-            <div class="pencil-icon">
-              <%= link_to edit_garden_my_plant_path(my_plant.garden, my_plant), class: "" do %>
-                  <%= image_tag "pencil.png" %>
-              <% end %>
-            </div>
-          </div>
+
         </div>
       </div>
     <% end %>
