@@ -1,12 +1,33 @@
-
 <%# button for adding a new garden (missing link) %>
-<div class="d-flex justify-content-around">
-
-  <div class="d-flex justify-content-center align-items-center">
+ <div class="d-flex justify-content-center align-items-center">
     <h2 class="text-center m-0"> Add a new garden</h2>
     <button class="green-button mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>+</h1></button>
-  </div>
+</div>
 
+ <%# Displaying all gardens %>
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <% @gardens.each do |garden| %>
+      <li class="nav-item">
+        <a class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></a>
+      </li>
+    <%end%>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <% @gardens.each do |garden| %>
+      <div class="tab-pane fade<%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
+        <div class="home-garden-card">
+            <%= link_to garden.name, garden_path(garden) %>
+            <% garden.my_plants.each do |my_plant| %>
+              <%= my_plant.nickname%>
+            <div class="plant-avatar">
+                <%= cl_image_tag my_plant.plant.photo.key, height: 280, width: 200, crop: :fill %>
+            </div>
+            <%end%>
+          </div>
+      </div>
+    <%end%>
+  </div>
+</div>
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -22,29 +43,13 @@
             <%= f.button :submit, class:"btn btn-primary" %>
           <% end %>
       </div>
-      </div>
     </div>
   </div>
   </div>
-
 <div class="container" data-controller="progressbar">
 
   <div class="notification-container">
     <h2 class="text-center px-2">Notifications</h2>
-
-<%# Progress Bar %>
-    <div class="progress mx-3 my-3" style="width: 90%">
-      <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-progressbar-target="progressbar"></div>
-    </div>
-
-<%# notifications %>
-    <div class="d-flex justify-content-around">
-
-
-  <div class="container" data-controller="progressbar">
-
-    <div class="notification-container">
-      <h2 class="text-center py-2 m-0">Notifications</h2>
 
   <%# Progress Bar %>
       <div class="progress mx-3 my-2" style="width: 90%">
@@ -96,8 +101,6 @@
       </div>
     </div>
 </div>
-
-
 
 
 <!--
