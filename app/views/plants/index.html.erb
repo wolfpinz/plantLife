@@ -1,5 +1,8 @@
 <h1 class="text-center">Search for a plant</h1>
-
+<%= form_tag fetch_api_my_plants_path, method: :post do %>
+<%=  file_field_tag :photo%>
+<%= submit_tag "submit" %>
+<%end%>
 <!-- [...] -->
 <%= form_tag garden_plants_path, class: "d-flex m-3", method: :get do %>
 <%= text_field_tag :query,
@@ -14,8 +17,8 @@
 
 <% @plants.each do |plant| %>
   <div class="container">
-    <%= cl_image_tag plant.photo.key, height: 300, width: 400, crop: :fill, class: "plant_search_thumbnail" %>
-    <p><%= plant.common_name %></p>
+    <%# <%= cl_image_tag plant.photo.key, height: 300, width: 400, crop: :fill, class: "plant_search_thumbnail" %>
+    <p><%= plant.common %></p>
     <%= link_to "Add plant", new_garden_my_plant_path(plant_id: plant.id) %>
   </div>
 <% end %>
