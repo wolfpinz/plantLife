@@ -15,13 +15,13 @@ Action.destroy_all
 puts "All Actions destroyed"
 
 garden_names = [
-  "outside",
-  "inside",
-  "office",
-  "terrace",
-  "bedroom",
-  "livingroom",
-  "bathroom"
+  "Outside",
+  "Inside",
+  "Office",
+  "Terrace",
+  "Bedroom",
+  "Livingroom",
+  "Bathroom"
 ]
 
 # plant_names = [
