@@ -1,3 +1,4 @@
+<div class="container py-2">
 <%# button for adding a new garden (missing link) %>
  <div class="d-flex justify-content-center align-items-center">
     <h2 class="text-center m-0"> Add a new garden</h2>
@@ -14,7 +15,7 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <% @gardens.each do |garden| %>
-      <div class="tab-pane fade<%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
+      <div class="tab-pane <%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
         <div class="home-garden-card">
             <%= link_to garden.name, garden_path(garden) %>
             <% garden.my_plants.each do |my_plant| %>
@@ -46,6 +47,8 @@
     </div>
   </div>
   </div>
+</div>
+
 <div class="container" data-controller="progressbar">
 
   <div class="notification-container">

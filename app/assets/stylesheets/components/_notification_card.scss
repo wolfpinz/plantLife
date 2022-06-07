@@ -1,21 +1,23 @@
 .notification-card {
   display: flex;
-  box-shadow: 2px 2px 4px 0px lightgray;
+  // box-shadow: 2px 2px 4px 0px lightgray;
   font-size: 12px;
   border-radius: 8px;
   margin-top: 1em;
   align-items: center;
   justify-content: space-between;
   line-height: 4px;
+  background-color: #d5dfc5;
 }
 
 .notification-container {
   // justify-content: space-around;
   // display: flex;
-  box-shadow: 2px 2px 4px 0px lightgray;
+  // box-shadow: 2px 2px 4px 0px lightgray;
   border-radius: 8px;
   margin-top: 1em;
   padding-bottom: 1em;
+  background-color: #d5dfc5;
 }
 
 .plant-avatar img {

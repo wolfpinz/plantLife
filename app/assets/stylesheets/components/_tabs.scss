@@ -1,0 +1,9 @@
+.nav-tabs .nav-link.active, .nav-tabs .nav-item.show .nav-link {
+  background-color: #d5dfc5;
+  border-bottom: 1px solid $primary;
+  border-radius: 8px 8px 0px 0px;
+}
+
+.nav-tabs {
+  border: none;
+}
