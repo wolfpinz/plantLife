@@ -14,13 +14,15 @@
   </ul>
   <div class="tab-content" id="myTabContent">
     <% @gardens.each do |garden| %>
-      <div class="tab-pane fade<%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
-        <div class="home-garden-card">
-            <%= link_to garden.name, garden_path(garden) %>
+      <div class="tab-pane fade text-center <%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
+        <%= link_to garden.name, garden_path(garden)%>
+        <div class="home-garden-card row flex-row flex-nowrap overflow-auto">
             <% garden.my_plants.each do |my_plant| %>
+            <div class="col-4">
               <%= my_plant.nickname%>
             <div class="plant-avatar">
                 <%= cl_image_tag my_plant.plant.photo.key, height: 280, width: 200, crop: :fill %>
+            </div>
             </div>
             <%end%>
           </div>
