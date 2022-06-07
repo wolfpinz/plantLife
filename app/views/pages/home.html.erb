@@ -7,8 +7,8 @@
  <%# Displaying all gardens %>
   <ul class="nav nav-tabs" id="myTab" role="tablist">
     <% @gardens.each do |garden| %>
-      <li class="nav-item">
-        <a class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></a>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-bs-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></button>
       </li>
     <%end%>
   </ul>
@@ -28,8 +28,6 @@
     <%end%>
   </div>
 </div>
-
-
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
