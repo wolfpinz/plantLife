@@ -1,9 +1,11 @@
 class GardensController < ApplicationController
-  before_action :set_garden, only: [:show, :destroy]
+  before_action :set_garden, only: [ :show, :destroy ]
   skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
 
   def index
     @gardens = Garden.where(user: current_user)
+    @garden_count = @gardens.count
+    @my_plants_count = my_plants_count
   end
 
   def show
@@ -29,6 +31,15 @@ class GardensController < ApplicationController
   end
 
   private
+
+  def my_plants_count
+    @gardens = Garden.where(user: current_user)
+    plant_count = 0
+    @gardens.each do |garden|
+      plant_count += garden.my_plants.count
+    end
+    return plant_count
+  end
 
   def garden_params
     params.require(:garden).permit(:name)
