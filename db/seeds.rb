@@ -50,7 +50,7 @@ plant_names = [
 User.create(email: "plant@life.com", password: "secret")
 
 def create_plant(url)
-  plant_api_key = ENV['plant_api']
+  plant_api_key = ENV['PLANT_API']
   plant_hash = RestClient.get(url, {:Authorization => "Bearer #{plant_api_key}"})
   common_name = JSON.parse(plant_hash)["alias"]
   temperature = JSON.parse(plant_hash)["max_temp"].to_s
