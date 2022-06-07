@@ -43,6 +43,10 @@ class MyPlantsController < ApplicationController
     # redirect_to :root
   end
 
+  def fetch_api
+    raise
+  end
+
   private
 
 
