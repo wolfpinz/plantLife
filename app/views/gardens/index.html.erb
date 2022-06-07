@@ -1,28 +1,43 @@
 <div class="container" style="width: 90%">
 
-  <h2 class="text-center my-4">
+  <h1 class="my-4">
     My Gardens
-  <h2>
+  <h1>
+  <div class="d-flex garden-meta-info">
+    <div><%= @garden_count %> gardens</div>
+    <div><%= @my_plants_count %> plants</div>
+    <div>4 to-do's</div>
+  </div>
 
   <% @gardens.each do |garden| %>
-    <%= link_to garden_path(garden) do %>
-    <h2><%= garden.name %></h2>
+  <div class="my-5">
+      <!-- Plant Images Carousel -->
+      <div class="carousel">
+          <% garden.my_plants.each do |p| %>
+            <div class="my-plant-card-horizontal">
+              <%= cl_image_tag p.plant.photo.key, class: "plant-image" %>
+              <% if p.nickname.empty? %>
+                <p><%= p.plant.common_name %></p>
+              <% else %>
+                <p><%= p.nickname %></p>
+              <% end %>
+            </div>
+          <% end %>
+      </div>
+
+      <!-- Garden Info -->
+      <div class="d-flex justify-content-between">
+        <div>
+          <%= link_to garden_path(garden) do %>
+          <h2><%= garden.name %></h2>
+          <% end %>
+          <p>bla</p>
+        </div>
+        <p class="flex-end">blub</p>
+      </div>
+
     <% end %>
-
-    <div class="carousel">
-        <% garden.my_plants.each do |p| %>
-          <div class="my-plant-card">
-            <%= cl_image_tag p.plant.photo.key, class: "plant-image" %>
-            <% if p.nickname.empty? %>
-              <h4><%= p.plant.common_name %></h4>
-            <% else %>
-              <h4><%= p.nickname %></h4>
-            <% end %>
-          </div>
-        <% end %>
-    </div>
-
-  <% end %>
+  </div>
 
 </div>
 
