@@ -2,12 +2,13 @@
   display: flex;
   // box-shadow: 2px 2px 4px 0px lightgray;
   font-size: 12px;
-  border-radius: 8px;
+  border-radius: 0px 8px 0px 8px;
   margin-top: 1em;
   align-items: center;
   justify-content: space-between;
   line-height: 4px;
-  background-color: #d5dfc5;
+  // background-color: #d5dfc5;
+  border: 1px #d5dfc5 solid;
 }
 
 .notification-container {
@@ -17,7 +18,7 @@
   border-radius: 8px;
   margin-top: 1em;
   padding-bottom: 1em;
-  background-color: #d5dfc5;
+  // background-color: #d5dfc5;
 }
 
 .plant-avatar img {
