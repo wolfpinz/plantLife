@@ -12,8 +12,7 @@ Rails.application.routes.draw do
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :gardens, only: [:show, :new, :create, :destroy, :index] do
-    resources :plants, only: [:index]
-    resources :my_plants, only: [:new, :create, :show, :edit, :update, :destroy]
+    resources :my_plants, only: [:new, :create, :show, :edit, :update, :destroy, :index]
   end
   resources :plants, only: [:new, :create]
 end
