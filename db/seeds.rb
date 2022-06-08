@@ -91,6 +91,7 @@ plants_array.each do |plants_hash|
   end
 
   plant = Plant.new(plants_hash)
+  plant.save
 
 
 end
