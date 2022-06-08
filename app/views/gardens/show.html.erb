@@ -10,22 +10,20 @@
 
           <%= cl_image_tag my_plant.photo.key, class: "plant-image-left", style:"width: 40%" %>
 
-          <div class="p-2">
+          <div class="p-2 garden-plant-info">
             <div class="lh-m">
               <% if my_plant.nickname.empty? %>
-                <h2><%= my_plant.plant.latin %></h2>
+                <h2 class="grey"><%= my_plant.plant.latin %></h2>
               <% else %>
-                <h2><%= my_plant.nickname %></h2>
+                <h2 class="grey"><%= my_plant.nickname %></h2>
               <% end %>
-
-            <!-- <p class="my-plant-label">Light Exposure: <%= my_plant.plant.ideallight %></p> -->
-              <p class="my-plant-label"><%= my_plant.plant.common %></p>
-              <p class="my-plant-label">Last watered: <%= my_plant.days_ago %> days ago</p>
-
-
             </div>
-
-
+              <p class="my-plant-label"><%= my_plant.plant.common %></p>
+              <% if my_plant.water? %>
+                <p class="my-plant-label water-info">needs water</p>
+              <% else %>
+                <p class="my-plant-label water-info">in <%= my_plant.days_ago + 7 %> days</p>
+              <% end %>
           </div>
         </div>
       </div>
