@@ -35,6 +35,8 @@ class MyPlantsController < ApplicationController
 
   def show
     # set_my_plant
+    # @my_plants_count = my_plants_count
+    @count = 0
   end
 
   def water

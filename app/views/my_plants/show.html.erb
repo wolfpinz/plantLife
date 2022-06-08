@@ -5,9 +5,6 @@
       <div class="d-flex justify-content-between">
         <div class="text-start m-2">
           <h2><%= @my_plant.nickname %></h2>
-          <p><%= @my_plant.plant.common ? @my_plant.plant.common.upcase : @my_plant.plant.latin.upcase %></p>
-          <p>Last watered: <%= @my_plant.days_ago %> days ago (<%= @my_plant.last_watered %>)</p>
-          <p>Does <%= @my_plant.nickname %> need water? <%= @my_plant.water? %></p>
         </div>
 
           <div class="pencil-icon align-self-start m-2">
@@ -15,12 +12,27 @@
               <i class="fas fa-edit"></i>
             <% end %>
           </div>
-        </div>
       </div>
+
+          <div class="text-start py-1 ms-2">
+            <p><%= @my_plant.plant.common ? @my_plant.plant.common.upcase : @my_plant.plant.latin.upcase %></p>
+            <p>Last watered: <%= @my_plant.days_ago %> days ago (<%= @my_plant.last_watered %>)</p>
+
+            <div class="flex-end to-do water text-center p-0 me-2">
+              <% if @my_plant.water? %>
+                <p>Please water <%= @my_plant.nickname %></p>
+              <% else %>
+                <p></p>
+              <% end %>
+            </div>
+
+          </div>
+
+  </div>
 
   <div class="pt-2 my-plant-card">
     <h4 class="pt-2">Needs:</h4>
-      <div class="d-flex flex-column align-items-around">
+      <div class="pb-3 d-flex flex-column align-items-around">
 
         <div class="d-flex justify-content-around align-items-center py-2">
           <i class="fas fa-tint" style="width: 10%"></i>
