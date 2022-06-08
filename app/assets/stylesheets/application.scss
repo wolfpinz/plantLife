@@ -23,3 +23,26 @@ body {
   font-size: 24px;
   font-weight: bolder;
 }
+
+.sticky-btn {
+    position: fixed;
+    bottom: 80px;
+    right: 24px;
+    font-size: 2rem;
+    height: 4.2rem;
+    width: 4.2rem;
+}
+
+.light-gray {
+  color: $light-gray;
+}
+
+// garden index
+#garden-count {
+  margin-right: 32px;
+  border-bottom: 2px solid darkgreen;
+}
+
+h1 {
+  font-size: 2.2rem;
+}
