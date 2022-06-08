@@ -1,9 +1,10 @@
+<div class="container py-2">
 <%# button for adding a new garden (missing link) %>
  <div class="d-flex justify-content-center align-items-center">
 </div>
 
  <%# Displaying all gardens %>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <ul class="nav nav-tabs justify-content-between" id="myTab" role="tablist">
     <% @gardens.each do |garden| %>
       <li class="nav-item" role="presentation">
         <button class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-bs-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></button>
@@ -13,8 +14,9 @@
   <div class="tab-content" id="myTabContent">
     <% @gardens.each do |garden| %>
       <div class="tab-pane fade text-center <%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
-        <%= link_to garden.name, garden_path(garden)%>
-        <div class="home-garden-card row flex-row flex-nowrap overflow-auto">
+        <% link_to garden.name, garden_path(garden)%>
+        <div class="home-garden-card">
+        <div class="row flex-row flex-nowrap overflow-auto">
             <% garden.my_plants.each do |my_plant| %>
             <div class="col-4">
               <%= my_plant.nickname%>
@@ -24,6 +26,7 @@
             </div>
             <%end%>
           </div>
+        </div>
       </div>
     <%end%>
   </div>
@@ -46,6 +49,8 @@
     </div>
   </div>
   </div>
+</div>
+
 <div class="container" data-controller="progressbar">
 
   <div class="notification-container">

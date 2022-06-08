@@ -1,6 +1,5 @@
 .navbar {
   justify-content: space-between;
-  background: white;
 }
 
 .navbar .navbar-collapse {
@@ -12,6 +11,6 @@
 }
 
 .navbar-plantlife {
-  background: white;
-  box-shadow: 2px -2px 6px lightgrey;
+  background: $final-green;
+  // box-shadow: 2px -2px 4px $primary;
 }

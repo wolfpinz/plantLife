@@ -17,13 +17,13 @@ Plant.destroy_all
 puts "All Plants destroyed"
 
 garden_names = [
-  "outside",
-  "inside",
-  "office",
-  "terrace",
-  "bedroom",
-  "livingroom",
-  "bathroom"
+  "Outside",
+  "Inside",
+  "Office",
+  "Terrace",
+  "Bedroom",
+  "Livingroom",
+  "Bathroom"
 ]
 
 # plant_names = [
@@ -90,13 +90,25 @@ plants_array.each do |plants_hash|
   plants_hash.select! do |key, _value|
     Plant.column_names.include?(key) && key != "id"
   end
+
   Plant.create!(plants_hash)
 end
 
 3.times do
   Garden.create(name: garden_names.sample, user: User.last)
   5.times do
-    MyPlant.create(garden: Garden.last, plant: Plant.all.sample, nickname: Faker::Name.first_name, last_watered: rand((DateTime.now - 2.weeks)..DateTime.now))
+    file = URI.open("https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg")
+    plant = MyPlant.create(garden: Garden.last,
+      plant: Plant.all.sample,
+      nickname: Faker::Name.first_name,
+      last_watered: rand((DateTime.now - 2.weeks)..DateTime.now)
+    )
+    plant.photo.attach(
+      io: file,
+      filename: "#{plant[:nickname]}",
+      content_type: 'image/png'
+    )
+    plant.save!
   end
 end
 
