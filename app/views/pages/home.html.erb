@@ -21,7 +21,7 @@
             <div class="col-4">
               <%= my_plant.nickname%>
             <div class="plant-avatar">
-                <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill %>
+                <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill if my_plant.photo.attached?%>
             </div>
             </div>
             <%end%>
@@ -70,7 +70,7 @@
               <div class="notification-card">
                 <div class="d-flex align-items-center">
                   <div class="plant-avatar">
-                    <%= cl_image_tag p.photo.key, height: 300, width: 400, crop: :fill %>
+                    <%= cl_image_tag p.photo.key, height: 300, width: 400, crop: :fill if p.photo.attached?%>
                   </div>
 
                   <div>
