@@ -4,13 +4,15 @@
 
     <div class="text-start">
       <h2><%= @my_plant.nickname %></h2>
-      <p><%= @my_plant.plant.common ? @my_plant.plant.commo.upcase : @my_plant.plant.latin.upcase %></p>
+      <p><%= @my_plant.plant.common ? @my_plant.plant.common.upcase : @my_plant.plant.latin.upcase %></p>
       <p>Last watered: <%= @my_plant.days_ago %> days ago (<%= @my_plant.last_watered %>)</p>
       <p>Does <%= @my_plant.nickname %> need water? <%= @my_plant.water? %></p>
     </div>
 
     <div class="pencil-icon align-self-start">
-      <%= image_tag "pencil.png" %>
+      <%= link_to edit_garden_my_plant_path do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
     </div>
   </div>
 
