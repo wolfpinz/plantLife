@@ -13,15 +13,17 @@ MyPlant.destroy_all
 puts "All MyPlants destroyed"
 Action.destroy_all
 puts "All Actions destroyed"
+Plant.destroy_all
+puts "All Plants destroyed"
 
 garden_names = [
-  "Outside",
-  "Inside",
-  "Office",
-  "Terrace",
-  "Bedroom",
-  "Livingroom",
-  "Bathroom"
+  "outside",
+  "inside",
+  "office",
+  "terrace",
+  "bedroom",
+  "livingroom",
+  "bathroom"
 ]
 
 # plant_names = [
@@ -49,7 +51,6 @@ garden_names = [
 
 User.create(email: "plant@life.com", password: "secret")
 
-
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
 #   plant_hash = RestClient.get(url, {:Authorization => "Bearer #{plant_api_key}"})
@@ -61,7 +62,7 @@ User.create(email: "plant@life.com", password: "secret")
 #   scientific_name = JSON.parse(plant_hash)["display_pid"]
 #   img = JSON.parse(plant_hash)["image_url"]
 #   file = URI.open(img)
-#   p plant = Plant.new(common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
+#   p (common_name: common_name, scientific_name: scientific_name, temperature: temperature, sun: light, water: water, soil: soil)
 #   plant.photo.attach(io: file, filename: "img", content_type: 'image/jpg')
 #   p plant.save
 # end
@@ -90,34 +91,15 @@ plants_array.each do |plants_hash|
     Plant.column_names.include?(key) && key != "id"
   end
 
-  plant = Plant.new(plants_hash)
-  plant.save
-
-
+  Plant.create!(plants_hash)
+  
 end
-
 
 3.times do
   Garden.create(name: garden_names.sample, user: User.last)
   5.times do
-    file = URI.open("https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg")
-    plant = MyPlant.create(garden: Garden.last,
-      plant: Plant.all.sample,
-      nickname: Faker::Name.first_name,
-      last_watered: rand((DateTime.now - 2.weeks)..DateTime.now)
-    )
-
-    plant.photo.attach(
-      io: file,
-      filename: "#{plant[:nickname]}",
-      content_type: 'image/png'
-    )
-
-    plant.save!
-
+    MyPlant.create(garden: Garden.last, plant: Plant.all.sample, nickname: Faker::Name.first_name, last_watered: rand((DateTime.now - 2.weeks)..DateTime.now))
   end
-
-
 end
 
 # API STUFF WE NEED
