@@ -4,7 +4,7 @@
 </div>
 
  <%# Displaying all gardens %>
-  <ul class="nav nav-tabs" id="myTab" role="tablist">
+  <ul class="nav nav-tabs justify-content-between" id="myTab" role="tablist">
     <% @gardens.each do |garden| %>
       <li class="nav-item" role="presentation">
         <button class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-bs-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></button>
