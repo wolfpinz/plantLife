@@ -1,11 +1,18 @@
 
 <div class="container justify-content-around" style="width: 90%">
 
-  <h1 class="align-left my-5"> <%= @garden.name %> </h1>
+  <h1 class="align-left my-4"> <%= @garden.name %> </h1>
+  <div class="d-flex garden-meta-info">
+    <div id="garden-count">
+      <p class="analytics"><%= @garden.my_plants.count %></p>
+      <p class="light-gray">plants</p>
+    </div>
+  </div>
+  <div class="mt-5">
   <% @my_plants.each do |my_plant| %>
     <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "text-decoration-none linked-plant-cards" do %>
 
-      <div class="my-plant-card">
+      <div class="my-plant-card mt-4">
         <div class="d-flex justify-content-left">
 
           <%= cl_image_tag my_plant.photo.key, class: "plant-image-left", style:"width: 40%" %>
@@ -34,4 +41,5 @@
       +
     </button>
   <% end %>
+  </div>
 </div>
