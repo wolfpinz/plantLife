@@ -1,7 +1,7 @@
 
 <div class="container justify-content-around" style="width: 90%">
 
-  <h1 class="align-middle"> <%= @garden.name %> </h1>
+  <h1 class="align-left my-5"> <%= @garden.name %> </h1>
   <% @my_plants.each do |my_plant| %>
     <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "text-decoration-none linked-plant-cards" do %>
 
@@ -20,9 +20,9 @@
             </div>
               <p class="my-plant-label"><%= my_plant.plant.common %></p>
               <% if my_plant.water? %>
-                <p class="my-plant-label water-info">needs water</p>
+                <p class="my-plant-label water-info bg-warning"><i class="fas fa-tint"></i> needs water</p>
               <% else %>
-                <p class="my-plant-label water-info">in <%= my_plant.days_ago + 7 %> days</p>
+                <p class="my-plant-label water-info"><i class="fas fa-tint"></i> in <%= my_plant.days_ago + 7 %> days</p>
               <% end %>
           </div>
         </div>
