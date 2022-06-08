@@ -33,6 +33,12 @@ class MyPlantsController < ApplicationController
     end
   end
 
+  def index
+    # display plants the user searched for
+    @garden = Garden.find(params[:garden_id])
+    @my_plants = @garden.my_plants
+  end
+
   def show
     # set_my_plant
   end
