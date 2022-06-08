@@ -49,7 +49,6 @@ garden_names = [
 
 User.create(email: "plant@life.com", password: "secret")
 
-
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
 #   plant_hash = RestClient.get(url, {:Authorization => "Bearer #{plant_api_key}"})
@@ -77,7 +76,7 @@ http.use_ssl = true
 http.verify_mode = OpenSSL::SSL::VERIFY_NONE
 request = Net::HTTP::Get.new(url)
 request["X-RapidAPI-Host"] = 'house-plants.p.rapidapi.com'
-request["X-RapidAPI-Key"] = ENV['plant_api']
+request["X-RapidAPI-Key"] = ENV['PLANT_API']
 
 response = http.request(request)
 plants_array = JSON.parse(response.read_body)
