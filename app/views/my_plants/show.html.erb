@@ -1,31 +1,30 @@
 <div class="container">
   <div class="d-flex my-plant-card mb-3">
-    <% if @my_plant.photo.present?  %>
       <%= cl_image_tag @my_plant.photo.key, class: "plant-image" %>
-    <% else %>
-      <%= cl_image_tag @my_plant.plant.photo.key, class: "plant-image" %>
-    <% end %>
 
     <div class="text-start">
       <h2><%= @my_plant.nickname %></h2>
-      <p><%= @my_plant.plant.common ? @my_plant.plant.commo.upcase : @my_plant.plant.latin.upcase %></p>
+      <p><%= @my_plant.plant.common ? @my_plant.plant.common.upcase : @my_plant.plant.latin.upcase %></p>
       <p>Last watered: <%= @my_plant.days_ago %> days ago (<%= @my_plant.last_watered %>)</p>
       <p>Does <%= @my_plant.nickname %> need water? <%= @my_plant.water? %></p>
     </div>
 
     <div class="pencil-icon align-self-start">
-      <%= image_tag "pencil.png" %>
+      <%= link_to edit_garden_my_plant_path do %>
+        <i class="fas fa-edit"></i>
+      <% end %>
     </div>
   </div>
 
   <div class="pt-2 my-plant-card">
     <h4 class="pt-2">Needs:</h4>
       <div class="d-flex justify-content-around p-2">
-        <div class="text-start">
-          <p><%= image_tag "drop.png", class: "needs-button" %> Water: <%= @my_plant.plant.watering %></p>
+        <div class="text-start d-flex">
+          <p>Water: <%= @my_plant.plant.watering %></p>
         </div>
         <div class="text-start">
-          <p><%= image_tag "sun.png", class: "needs-button" %> Sun: <%= @my_plant.plant.ideallight %></p>
+          <i class="fas fa-cloud-sun"></i>
+          <p> Sun: <%= @my_plant.plant.ideallight %></p>
           <p><%= image_tag "thermometer.png", class: "needs-button" %> Temperature: <%= @my_plant.plant.tempmax %></p>
         </div>
       </div>
