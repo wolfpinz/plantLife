@@ -61,12 +61,20 @@ class MyPlantsController < ApplicationController
     full_url = "#{base_url}?api-key=#{api_key}&images=#{img_url}&organs=#{organ}"
     response = RestClient.get(full_url)
     response = JSON.parse(response)
-    score = JSON.parse(response)["score"]
-    genus = JSON.parse(response)["genus"]
-    family = JSON.parse(response)["family"]
-    common_name = JSON.parse(response)["commonNames"]
-    # plant = Plant.new()
+    result_family = response['results'].first['species']['family']['scientificNameWithoutAuthor']
+    result_genus =  response['results'].first['species']['genus']['scientificNameWithoutAuthor']
+    plant = Plant.where("family ILIKE ? AND latin ILIKE ?", "#{result_family}", "%#{result_genus}%").first
+    my_plant.plant = plant
+    my_plant.nickname = "#{current_user.first_name}'s #{plant.latin}"
+    my_plant.last_watered = Date.today
+    if my_plant.save
+      redirect_to edit_garden_my_plant_path(garden, my_plant)
+    else
+      my_plant.destroy
+      flash[:alert] = "Ops, something went wrong try again."
+    end
   end
+
   private
 
   def set_garden
