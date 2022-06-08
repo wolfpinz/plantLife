@@ -23,9 +23,9 @@
               <div class="my-plant-card-horizontal">
                 <%= cl_image_tag p.photo.key, class: "plant-image" %>
                 <% if p.nickname.empty? %>
-                  <p><%= p.plant.common_name %></p>
+                  <h4><%= p.plant.common_name %></h4>
                 <% else %>
-                  <p><%= p.nickname %></p>
+                  <h4><%= p.nickname %></h4>
                 <% end %>
               </div>
             <% end %>
@@ -35,7 +35,8 @@
         <div class="d-flex justify-content-between">
           <div>
             <%= link_to garden_path(garden) do %>
-            <h2><%= garden.name %></h2>
+            <h2 class="m-0"><%= garden.name %></h2>
+            <%# <i class="fas fa-external-link"></i> %>
             <% end %>
             <p class="light-gray"><%= garden.my_plants.count %> plants</p>
           </div>
