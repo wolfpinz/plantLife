@@ -1,7 +1,5 @@
 <%# button for adding a new garden (missing link) %>
  <div class="d-flex justify-content-center align-items-center">
-    <h2 class="text-center m-0"> Add a new garden</h2>
-    <button class="green-button mx-2" data-bs-toggle="modal" data-bs-target="#exampleModal"><h1>+</h1></button>
 </div>
 
  <%# Displaying all gardens %>
@@ -71,9 +69,9 @@
                   </div>
 
                   <div>
-                    <h6 class="mt-1"><%= p.nickname %></h6>
-                    <p><%= p.plant.common %></p>
-                    <p><%= p.garden.name %></p>
+                    <h4 class="mt-1"><%= p.nickname %></h4>
+                    <p class="light-gray"><%= p.plant.common %></p>
+                    <p class="light-gray"><%= p.garden.name %></p>
                     <% if p.overdue == "due today" %>
                       <p class="today"><%= p.overdue %></p>
                     <% elsif %>
@@ -102,4 +100,7 @@
 
       </div>
     </div>
+    <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="green-button mx-2 sticky-btn">
+    +
+  </button>
 </div>
