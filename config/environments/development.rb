@@ -74,4 +74,9 @@ Rails.application.configure do
 
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
+
+  # allow requests by ngrok for PWA
+  # config.hosts << /[a-z0-9\-]+\.ngrok\.io/
+  config.hosts << /[a-z0-9-]+\.ngrok\.io/
+  # config.hosts << "46e6-2a02-8071-5070-aa60-192d-4722-9a8c-ef49.eu.ngrok.io"
 end
