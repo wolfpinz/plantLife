@@ -1,10 +1,6 @@
 <div class="container">
-  <div class="my-plant-card mb-3">
-    <% if @my_plant.photo.present?  %>
-      <%= cl_image_tag @my_plant.photo.key, class: "my-plant-show" %>
-    <% else %>
-      <%= cl_image_tag @my_plant.plant.photo.key, class: "my-plant-show" %>
-    <% end %>
+  <div class="d-flex my-plant-card mb-3">
+      <%= cl_image_tag @my_plant.photo.key, class: "plant-image" %>
 
     <div class="text-start">
       <h2><%= @my_plant.nickname %></h2>

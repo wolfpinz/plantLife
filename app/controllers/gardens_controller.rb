@@ -3,6 +3,7 @@ class GardensController < ApplicationController
   skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
 
   def index
+    @garden = Garden.new
     @gardens = Garden.where(user: current_user)
     @garden_count = @gardens.count
     @my_plants_count = my_plants_count
