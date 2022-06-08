@@ -2,6 +2,8 @@ Rails.application.routes.draw do
   devise_for :users
   root to: 'pages#home'
 
+  get 'landing', to: 'pages#landing', as: :landing
+
   resources :my_plants, only: [] do
     member do
       patch :water
