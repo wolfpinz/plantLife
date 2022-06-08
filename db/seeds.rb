@@ -90,7 +90,9 @@ plants_array.each do |plants_hash|
   plants_hash.select! do |key, _value|
     Plant.column_names.include?(key) && key != "id"
   end
+
   Plant.create!(plants_hash)
+  
 end
 
 3.times do

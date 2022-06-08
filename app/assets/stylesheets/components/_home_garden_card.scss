@@ -1,10 +1,18 @@
 .home-garden-card {
   text-align: center;
-  box-shadow: 2px 2px 4px 0px lightgray;
+  // box-shadow: 2px 2px 4px 0px lightgray;
   font-size: 12px;
+<<<<<<< HEAD
   border-radius: 8px;
   margin-top: 1em;
   padding-bottom: 8px
+=======
+  border-radius:  0px 0px 8px 8px;
+  border-top: 1px solid $primary;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  background-color: $final-green;
+>>>>>>> 7e4b6637b0a9d6acc102a4883a1c86fc9c9d79de
 }
 
 .home-garden-image {
