@@ -3,7 +3,7 @@
 <div class="container p-5">
   <h1 class="text-center my-5">Take a photo of your plant!</h1>
 
-  <%= form_tag fetch_api_my_plants_path(garden_id: @garden.id), class: "d-flex flex-column photo-upload", method: :post, multipart: true do %>
+  <%= form_tag fetch_api_my_plants_path(garden_id: @garden.id), class: "d-flex align-items-center flex-column photo-upload", method: :post, multipart: true do %>
     <%=  file_field_tag :photo%>
     <%= submit_tag "UPLOAD", class: "btn btn-primary mt-4", id: "photo-send" %>
   <%end%>

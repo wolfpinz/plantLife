@@ -15,21 +15,22 @@
       <div class="tab-pane fade text-center <%= ' active show ' if @gardens.first == garden %>" id="<%=garden.name%>" role="tabpanel" aria-labelledby="<%=garden.name%>-tab">
         <% link_to garden.name, garden_path(garden)%>
         <div class="home-garden-card">
-        <div class="row flex-row flex-nowrap overflow-auto">
-            <% garden.my_plants.each do |my_plant| %>
-            <div class="col-4">
-              <%= my_plant.nickname%>
-            <div class="home-garden img">
-                <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill if my_plant.photo.attached?%>
+          <div class="row flex-row flex-nowrap overflow-auto">
+              <% garden.my_plants.each do |my_plant| %>
+              <div class="col-4">
+                <%= my_plant.nickname%>
+                <div class="home-garden img">
+                    <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill if my_plant.photo.attached?%>
+                </div>
+              </div>
+              <%end%>
             </div>
-            </div>
-            <%end%>
-          </div>
         </div>
       </div>
     <%end%>
   </div>
 </div>
+
 
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
