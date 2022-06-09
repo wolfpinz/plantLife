@@ -39,8 +39,7 @@
   </head>
 
   <body>
-
-    <%= render 'shared/navbar' %>
+    <%= render 'shared/navbar' unless current_page?(controller: 'pages', action: 'landing') %>
     <%= render 'shared/flashes' %>
 
     <%= yield %>
