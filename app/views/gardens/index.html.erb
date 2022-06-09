@@ -40,7 +40,7 @@
             <h2 class="m-0"><%= garden.name %></h2>
             <%# <i class="fas fa-external-link"></i> %>
             <% end %>
-            <p class="light-gray"><%= garden.my_plants.count %> plants</p>
+            <p class="light-gray"><span class="number"><%= garden.my_plants.count %></span> plants</p>
           </div>
           <div class="flex-end align-self-end">
             <% garden.my_plants.each do |p| %>
@@ -53,9 +53,9 @@
 
             <p class="to-do">
               <% if @count == 1 %>
-                <%= @count %> to-do
+                <span class="number"><%= @count %></span> to-do
               <% else %>
-                <%= @count %> to-do's
+                <span class="number"><%= @count %></span> to-do's
               <% end %>
             </p>
 
