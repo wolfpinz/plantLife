@@ -1,7 +1,6 @@
 class MyPlantsController < ApplicationController
   before_action :set_garden, only: [ :new, :create, :show]
   before_action :set_my_plant, only: [ :show, :water ]
-  before_action :set_plant, only: [ :new, :create ]
   skip_before_action :authenticate_user!, only: [ :new, :create, :show ]
 
   def new
@@ -21,6 +20,7 @@ class MyPlantsController < ApplicationController
   end
 
   def create
+    @plant = Plant.find(params[:plant_id])
     @my_plant = MyPlant.new(my_plant_params)
     @garden = Garden.find(params[:garden_id])
     @my_plant.garden = @garden
@@ -66,15 +66,17 @@ class MyPlantsController < ApplicationController
     img_url = my_plant.photo.url
     organ = "auto"
     full_url = "#{base_url}?api-key=#{api_key}&images=#{img_url}&organs=#{organ}"
+    puts full_url
     response = RestClient.get(full_url)
+    puts response
     response = JSON.parse(response)
     result_family = response['results'].first['species']['family']['scientificNameWithoutAuthor']
     result_genus =  response['results'].first['species']['genus']['scientificNameWithoutAuthor']
     plant = Plant.where("family ILIKE ? AND latin ILIKE ?", "#{result_family}", "%#{result_genus}%").first
     if plant.nil?
       my_plant.destroy
+      redirect_to garden_my_plants_path(garden)
       flash[:alert] = "Oops, something went wrong try again."
-      redirect_to new_garden_my_plant_path
     else
       my_plant.plant = plant
       my_plant.nickname = "#{current_user.first_name}'s #{plant.latin}"
@@ -88,10 +90,6 @@ class MyPlantsController < ApplicationController
 
   def set_garden
     @garden = Garden.find(params[:garden_id])
-  end
-
-  def set_plant
-    @plant = Plant.find(params[:plant_id])
   end
 
   def set_my_plant
