@@ -22,12 +22,16 @@ body {
     h4 {
       margin-bottom: 0.25rem;
     }
-
   }
+}
+
+.container {
+  padding-bottom: 10vh;
+}
 
 .background-image {
-  background-image: url("/assets/1436648.jpg");
-  height: 1792px;
+  background-image: asset_url("1436648.jpg");
+  height: 100vh;
 }
 
 .analytics {
@@ -38,8 +42,8 @@ body {
 
 .sticky-btn {
   position: fixed;
-  bottom: 80px;
-  right: 24px;
+  bottom: 85px;
+  right: 5px;
   font-size: 2rem;
   height: 4.2rem;
   width: 4.2rem;

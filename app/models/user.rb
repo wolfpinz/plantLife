@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
   has_many :actions, dependent: :destroy
   has_many :gardens, dependent: :destroy
-  has_many :my_plants, through: :garden
+  has_many :my_plants, through: :gardens
 end

@@ -1,5 +1,7 @@
 <div class="container">
 
+<%= cl_image_tag @plant.photo.key, height: 300, width: 400, crop: :fill %>
+
   <h1 class="text-center"><%= @plant.common %></h1>
   <%= cl_image_tag @plant.photo.key, height: 300, width: 400, crop: :fill %>
 
