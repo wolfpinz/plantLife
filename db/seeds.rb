@@ -17,13 +17,13 @@ Plant.destroy_all
 puts "All Plants destroyed"
 
 garden_names = [
-  "outside",
-  "inside",
-  "office",
-  "terrace",
-  "bedroom",
-  "livingroom",
-  "bathroom"
+  "Outside",
+  "Inside",
+  "Office",
+  "Terrace",
+  "Bedroom",
+  "Livingroom",
+  "Bathroom"
 ]
 
 # plant_names = [
@@ -92,7 +92,6 @@ plants_array.each do |plants_hash|
   end
 
   Plant.create!(plants_hash)
-
 end
 
 3.times do
