@@ -1,4 +1,4 @@
-<div class="background-image d-flex align-items-center justify-content-center">
+<div class="background-image d-flex flex-column align-items-center justify-content-center">
 
   <div class="landing-text">
     <i class="fas fa-seedling"></i>
@@ -6,5 +6,9 @@
     <p>Change your life, learn to plant</p>
   </div>
 
-  <h3>Open</h3>
+  <div class="text-center open-button">
+    <%= link_to root_path do %>
+      <h3>Open</h3>
+    <% end %>
+  </div>
 </div>
