@@ -13,8 +13,15 @@
 @import "pages/index";
 
 body {
-  p {
-    font-size: 16px;
+  padding-bottom: 60px;
+    p {
+      font-size: 16px;
+      margin-bottom: 0.25rem;
+    }
+
+    h4 {
+      margin-bottom: 0.25rem;
+    }
   }
 }
 
@@ -30,6 +37,7 @@ body {
 .analytics {
   font-size: 24px;
   font-weight: bolder;
+  font-family: "Playfair Display";
 }
 
 .sticky-btn {
@@ -58,4 +66,9 @@ h1 {
 .fas {
   font-size: 1.8em;
   color: $plant-green;
+}
+
+.number {
+  font-family: "Playfair Display";
+  padding-bottom: 2px;
 }

@@ -16,7 +16,7 @@
 
           <div class="text-start py-1 ms-2">
             <p><%= @my_plant.plant.common ? @my_plant.plant.common.upcase : @my_plant.plant.latin.upcase %></p>
-            <p>Last watered: <%= @my_plant.days_ago %> days ago (<%= @my_plant.last_watered %>)</p>
+            <p>Last watered: <%= @my_plant.days_ago %> days ago</p>
 
             <div class="flex-end to-do water text-center p-0 me-2">
               <% if @my_plant.water? %>
