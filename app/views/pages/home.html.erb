@@ -1,10 +1,9 @@
-<div class="container py-2">
+<div class="container">
 <%# button for adding a new garden (missing link) %>
- <div class="d-flex justify-content-center align-items-center">
-</div>
+  <h1 class="my-4 ps-2">Home</h1>
 
  <%# Displaying all gardens %>
-  <ul class="nav nav-tabs justify-content-between" id="myTab" role="tablist">
+  <ul class="nav nav-tabs justify-content-around" id="myTab" role="tablist">
     <% @gardens.each do |garden| %>
       <li class="nav-item" role="presentation">
         <button class="nav-link <%= 'active' if @gardens.first == garden %>" id="<%=garden.name%>-tab" data-bs-toggle="tab" href="#<%=garden.name%>" role="tab" aria-controls="<%=garden.name%>" aria-selected="true"><%=garden.name%></button>
@@ -20,7 +19,7 @@
             <% garden.my_plants.each do |my_plant| %>
             <div class="col-4">
               <%= my_plant.nickname%>
-            <div class="plant-avatar">
+            <div class="home-garden img">
                 <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill if my_plant.photo.attached?%>
             </div>
             </div>
@@ -54,7 +53,7 @@
 <div class="container" data-controller="progressbar">
 
   <div class="notification-container">
-    <h2 class="text-center px-2">Notifications</h2>
+    <h1 class="ps-2">Notifications</h1>
 
   <%# Progress Bar %>
       <div class="progress mx-3 my-2" style="width: 90%">
@@ -73,9 +72,8 @@
                     <%= cl_image_tag p.photo.key, height: 300, width: 400, crop: :fill if p.photo.attached?%>
                   </div>
 
-                  <div>
-                    <h4 class="mt-1"><%= p.nickname %></h4>
-                    <p class="light-gray"><%= p.plant.common %></p>
+                  <div class="mt-1">
+                    <h4 ><%= p.nickname %></h4>
                     <p class="light-gray"><%= p.garden.name %></p>
                     <% if p.overdue == "due today" %>
                       <p class="today"><%= p.overdue %></p>

@@ -1,14 +1,13 @@
 .notification-card {
   display: flex;
-  box-shadow: 2px 2px 4px 0px lightgray;
+  box-shadow: 0 0 8px rgba(0,0,0,0.2);
   font-size: 12px;
-  border-radius: 0px 8px 0px 8px;
+  border-radius: 8px;
   margin-top: 1em;
   align-items: center;
   justify-content: space-between;
-  line-height: 4px;
-  // background-color: $final-green;
-  border: 1px $final-green solid;
+  line-height: 12px;
+  background-color: $white;
 }
 
 .notification-container {
@@ -17,16 +16,18 @@
   // box-shadow: 2px 2px 4px 0px lightgray;
   border-radius: 8px;
   margin-top: 1em;
+  padding-top: 1em;
   padding-bottom: 1em;
-  // background-color: $final-green;
+  background-color: $light-green;
 }
 
 .plant-avatar img {
   width: 60px;
   height: 60px;
   object-fit: cover;
-  border-radius: 50%;
+  border-radius: 6px;
   margin: 0px 16px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
 }
 
 .overdue {
