@@ -21,7 +21,7 @@
 
 .plant-image-left {
   width: 100%;
-  height: 12rem;
+  height: 8rem;
   border-radius: 8px 0px 0px 8px;
   object-fit: cover;
   object-position: top;
@@ -50,4 +50,10 @@
   height: 14rem;
   border-radius: 8px;
   object-fit: cover;
+}
+
+
+.my-plant-label .fas {
+  font-size: 1rem;
+  color: white;
 }
