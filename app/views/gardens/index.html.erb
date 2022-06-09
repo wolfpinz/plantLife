@@ -1,38 +1,40 @@
 
-<div class="container" style="width: 90%">
+<div class="container">
 
-  <h1 class="my-4">
-    My Gardens
-  <h1>
-  <div class="d-flex garden-meta-info">
-    <div id="garden-count">
-      <p class="analytics"><%= @garden_count %></p>
-      <p class="light-gray">gardens</p>
-    </div>
-    <div id="plant-count">
-      <p class="analytics"><%= @my_plants_count %></p>
-      <p class="light-gray">plants</p>
+  <div class="container">
+    <h1 class="my-4">
+      My Gardens
+    </h1>
+    <div class="d-flex garden-meta-info">
+      <div id="garden-count">
+        <p class="analytics"><%= @garden_count %></p>
+        <p class="light-gray">gardens</p>
+      </div>
+      <div id="plant-count">
+        <p class="analytics"><%= @my_plants_count %></p>
+        <p class="light-gray">plants</p>
+      </div>
     </div>
   </div>
 
   <% @gardens.each do |garden| %>
-    <div class="my-5">
+    <div class="my-5 garden-card">
         <!-- Plant Images Carousel -->
         <div class="carousel">
             <% garden.my_plants.each do |p| %>
               <div class="my-plant-card-horizontal">
                 <%= cl_image_tag p.photo.key, class: "plant-image" %>
                 <% if p.nickname.empty? %>
-                  <h4><%= p.plant.common_name %></h4>
+                  <h4 class="ps-1"><%= p.plant.common_name %></h4>
                 <% else %>
-                  <h4><%= p.nickname %></h4>
+                  <h4 class="ps-1"><%= p.nickname %></h4>
                 <% end %>
               </div>
             <% end %>
         </div>
 
         <!-- Garden Info -->
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between garden-info-card">
           <div>
             <%= link_to garden_path(garden) do %>
             <h2 class="m-0"><%= garden.name %></h2>
@@ -40,7 +42,7 @@
             <% end %>
             <p class="light-gray"><%= garden.my_plants.count %> plants</p>
           </div>
-          <div class="flex-end">
+          <div class="flex-end align-self-end">
             <% garden.my_plants.each do |p| %>
               <% if p.water? %>
                 <% @count += 1 %>
@@ -65,6 +67,7 @@
   <button data-bs-toggle="modal" data-bs-target="#exampleModal" class="green-button mx-2 sticky-btn">
     +
   </button>
+
   <!-- Modal -->
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
