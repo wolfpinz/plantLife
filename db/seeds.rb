@@ -49,7 +49,7 @@ garden_names = [
 #   "monstera friedrichsthalii"
 # ]
 
-User.create(email: "plant@life.com", password: "secret")
+User.create(email: "plant@life.com", password: "secret", first_name: "Bob", last_name: "Lovesplants")
 
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
