@@ -2,18 +2,22 @@
   text-align: center;
   // box-shadow: 2px 2px 4px 0px lightgray;
   font-size: 12px;
+  border-radius: 8px;
+  margin-top: 1em;
+  padding-bottom: 8px;
   border-radius:  0px 0px 8px 8px;
   border-top: none;
   padding-top: 1em;
   padding-bottom: 1em;
-  background-color: $white;
+  background-color: white;
+
 }
 
-.home-garden-image {
-  width: 40%;
-  border-radius: 8px;
-  margin-right: 1em;
-  object-fit: cover;
+.home-garden img {
+  width: 80px;
+  height: 90px;
+  border-radius: 8px 8px 8px 8px;
+  object-position: top;
 }
 
 .home-garden-card h2 {
