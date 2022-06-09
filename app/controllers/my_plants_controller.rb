@@ -25,7 +25,6 @@ class MyPlantsController < ApplicationController
     @garden = Garden.find(params[:garden_id])
     @my_plant.garden = @garden
     @my_plant.plant = Plant.find(params[:plant_id])
-    # raise
     if @my_plant.save
       redirect_to garden_path(@garden)
     else
@@ -51,12 +50,12 @@ class MyPlantsController < ApplicationController
     # redirect_to :root
   end
 
-#   service: https://my-api.plantnet.org/v2/identify/all
-# api-key: api-key=2b10u4CCI6D9vcBSt3qJ63MO
-# image_1: images=https%3A%2F%2Fmy.plantnet.org%2Fimages%2Fimage_1.jpeg
-# image_2: images=https%3A%2F%2Fmy.plantnet.org%2Fimages%2Fimage_2.jpeg
-# organ_1: organs=flower
-# organ_2: organs=leaf
+  # service: https://my-api.plantnet.org/v2/identify/all
+  # api-key: api-key=2b10u4CCI6D9vcBSt3qJ63MO
+  # image_1: images=https%3A%2F%2Fmy.plantnet.org%2Fimages%2Fimage_1.jpeg
+  # image_2: images=https%3A%2F%2Fmy.plantnet.org%2Fimages%2Fimage_2.jpeg
+  # organ_1: organs=flower
+  # organ_2: organs=leaf
 
   def fetch_api
     garden = Garden.find(params[:garden_id])
@@ -72,14 +71,16 @@ class MyPlantsController < ApplicationController
     result_family = response['results'].first['species']['family']['scientificNameWithoutAuthor']
     result_genus =  response['results'].first['species']['genus']['scientificNameWithoutAuthor']
     plant = Plant.where("family ILIKE ? AND latin ILIKE ?", "#{result_family}", "%#{result_genus}%").first
-    my_plant.plant = plant
-    my_plant.nickname = "#{current_user.first_name}'s #{plant.latin}"
-    my_plant.last_watered = Date.today
-    if my_plant.save
-      redirect_to edit_garden_my_plant_path(garden, my_plant)
-    else
+    if plant.nil?
       my_plant.destroy
-      flash[:alert] = "Ops, something went wrong try again."
+      flash[:alert] = "Oops, something went wrong try again."
+      redirect_to new_garden_my_plant_path
+    else
+      my_plant.plant = plant
+      my_plant.nickname = "#{current_user.first_name}'s #{plant.latin}"
+      my_plant.last_watered = Date.today
+      my_plant.save
+      redirect_to edit_garden_my_plant_path(garden, my_plant)
     end
   end
 

@@ -1,10 +1,10 @@
 class GardensController < ApplicationController
   before_action :set_garden, only: [ :show, :destroy ]
-  skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
+  # skip_before_action :authenticate_user!, only: [ :show, :new, :create, :destroy ]
 
   def index
     @garden = Garden.new
-    @gardens = Garden.where(user: current_user)
+    @gardens = current_user.gardens
     @garden_count = @gardens.count
     @my_plants_count = my_plants_count
     @count = 0
@@ -51,7 +51,8 @@ class GardensController < ApplicationController
   # end
 
   def my_plants_count
-    @gardens = Garden.where(user: current_user)
+    @gardens = current_user.gardens
+    # @gardens.map { |garden| garden.my_plants.count }.sum
     plant_count = 0
     @gardens.each do |garden|
       plant_count += garden.my_plants.count
