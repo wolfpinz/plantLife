@@ -17,7 +17,7 @@
 
           <%= cl_image_tag my_plant.photo.key, class: "plant-image-left", style:"width: 40%" %>
 
-          <div class="p-2 garden-plant-info">
+          <div class="garden-plant-info ps-3">
             <div class="lh-m">
               <% if my_plant.nickname.empty? %>
                 <h2 class="grey"><%= my_plant.plant.latin %></h2>
