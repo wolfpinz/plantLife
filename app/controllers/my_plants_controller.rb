@@ -76,7 +76,7 @@ class MyPlantsController < ApplicationController
     if plant.nil?
       my_plant.destroy
       redirect_to garden_my_plants_path(garden)
-      flash[:alert] = "Oops, something went wrong try again."
+      flash[:alert] = "Oops, something went wrong. Please try again."
     else
       my_plant.plant = plant
       my_plant.nickname = "#{current_user.first_name}'s #{plant.latin}"
