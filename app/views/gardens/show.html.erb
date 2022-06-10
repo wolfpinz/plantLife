@@ -1,24 +1,26 @@
 
 <div class="container justify-content-around" style="width: 90%">
 
-  <h1 class="align-left my-4"> <%= @garden.name %> </h1>
+
   <div class="d-flex garden-meta-info">
     <div id="garden-count">
+      <h1 class="align-left my-4"> <%= @garden.name %> </h1>
       <p class="analytics"><%= @garden.my_plants.count %></p>
-      <p class="light-gray">plants</p>
+      <p class="light-gray" style="font-weight: 500; font-size: 20px; color: #545252">Plants</p>
     </div>
   </div>
+
   <div class="mt-5">
   <% @my_plants.each do |my_plant| %>
     <%= link_to garden_my_plant_path(my_plant.garden, my_plant), class: "text-decoration-none linked-plant-cards" do %>
 
       <div class="my-plant-card mt-4">
-        <div class="d-flex justify-content-left">
+        <div class="d-flex justify-content-left align-items-center ">
 
           <%= cl_image_tag my_plant.photo.key, class: "plant-image-left", style:"width: 40%" %>
 
-          <div class="garden-plant-info ps-3">
-            <div class="lh-m">
+          <div class="garden-plant-info d-flex align-items-start flex-column ps-3">
+            <div class="" style="line-height: 1.5rem">
               <% if my_plant.nickname.empty? %>
                 <h2 class="grey"><%= my_plant.plant.latin %></h2>
               <% else %>
