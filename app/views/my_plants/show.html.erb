@@ -21,7 +21,9 @@
 
             <div class="flex-end to-do water text-center p-0 me-2">
               <% if @my_plant.water? %>
-                <p style="margin-bottom: 18px; padding-top: 8px; padding-bottom: 8px">Please water <%= @my_plant.nickname %></p>
+              <div class="d-flex justify-content-center align-items-center pb-8px">
+                <p style="padding-top: 8px; padding-bottom: 8px"><i class="fas fa-tint" style="font-size: 1.2rem; color: white; "></i>  Please water <%= @my_plant.nickname %></p>
+              </div>
               <% else %>
                 <p></p>
               <% end %>
