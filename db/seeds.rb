@@ -46,7 +46,7 @@ garden_names = [
 # ]
 
 
-User.create(email: "plant@life.com", password: "secret", first_name: "Bob", last_name: "Lovesplants")
+User.create(email: "plant@life.com", password: "secret", first_name: "Vitaliy", last_name: "Lovesplants")
 
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
