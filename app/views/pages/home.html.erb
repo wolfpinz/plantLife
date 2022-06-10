@@ -20,10 +20,10 @@
             <div class="row flex-row flex-nowrap overflow-auto">
                 <% garden.my_plants.each do |my_plant| %>
                 <div class="col-4">
-                  <%= my_plant.nickname%>
                   <div class="home-garden img">
                       <%= cl_image_tag my_plant.photo.key, height: 280, width: 200, crop: :fill if my_plant.photo.attached?%>
                   </div>
+                  <span class="pt-2" style="font-size: 16px"><%= my_plant.nickname%></span>
                 </div>
                 <%end%>
               </div>
@@ -36,7 +36,7 @@
   <div class="notifications-container" data-controller="progressbar">
     <h1 class="my-4 ps-2">Notifications</h1>
     <%# Progress Bar %>
-    <div class="progress mx-3 my-2" style="width: 90%">
+    <div class="progress my-2" >
       <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" data-progressbar-target="progressbar"></div>
     </div>
 
@@ -45,12 +45,12 @@
       <div class="d-flex justify-content-around flex-column pb-4">
         <% @my_plants.each do |p| %>
           <% if p.water? %>
-            <div class="notification-card">
+            <div class="notification-card mx-2">
               <div class="plant-avatar">
                 <%= cl_image_tag p.photo.key, class: "img-card-not", crop: :fill if p.photo.attached?%>
               </div>
               <div class="d-flex align-items-center">
-                <div class="mt-1">
+                <div class="mt-1" style="line-height: 1.5rem">
                   <h4 ><%= p.nickname %></h4>
                   <p class="light-gray"><%= p.garden.name %></p>
                   <% if p.overdue == "due today" %>
