@@ -20,7 +20,7 @@
               <div class="col-4">
                 <%= my_plant.nickname%>
                 <div class="home-garden img">
-                    <%= cl_image_tag my_plant.photo.key, crop: :fill if my_plant.photo.attached?%>
+                    <%= cl_image_tag my_plant.photo.key, height: 300, width: 400, crop: :fill if my_plant.photo.attached?%>
                 </div>
               </div>
               <%end%>
