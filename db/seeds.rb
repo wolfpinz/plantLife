@@ -13,17 +13,13 @@ MyPlant.destroy_all
 puts "All MyPlants destroyed"
 Action.destroy_all
 puts "All Actions destroyed"
-Plant.destroy_all
-puts "All Plants destroyed"
+# Plant.destroy_all
+# puts "All Plants destroyed"
 
 garden_names = [
   "Outside",
   "Inside",
-  "Office",
-  "Terrace",
-  "Bedroom",
-  "Livingroom",
-  "Bathroom"
+  "Office"
 ]
 
 # plant_names = [
@@ -49,7 +45,8 @@ garden_names = [
 #   "monstera friedrichsthalii"
 # ]
 
-User.create(email: "plant@life.com", password: "secret", first_name: "Bob", last_name: "Lovesplants")
+
+User.create(email: "plant@life.com", password: "secret", first_name: "Vitaliy", last_name: "Lovesplants")
 
 # def create_plant(url)
 #   plant_api_key = ENV['plant_api']
@@ -71,45 +68,111 @@ User.create(email: "plant@life.com", password: "secret", first_name: "Bob", last
 #   create_plant(url)
 # end
 
-url = URI("https://house-plants.p.rapidapi.com/all")
 
-http = Net::HTTP.new(url.host, url.port)
-http.use_ssl = true
-http.verify_mode = OpenSSL::SSL::VERIFY_NONE
-request = Net::HTTP::Get.new(url)
-request["X-RapidAPI-Host"] = 'house-plants.p.rapidapi.com'
-request["X-RapidAPI-Key"] = ENV['PLANT_API']
 
-response = http.request(request)
-plants_array = JSON.parse(response.read_body)
-p plants_array
-plants_array.each do |plants_hash|
-  plants_hash["tempmin"] = plants_hash["tempmin"]["celsius"].to_s + "C"
-  plants_hash["tempmax"] = plants_hash["tempmax"]["celsius"].to_s + "C"
-  plants_hash["common"] = plants_hash["common"].first || plants_hash["latin"]
-  plants_hash.select! do |key, _value|
-    Plant.column_names.include?(key) && key != "id"
-  end
+# url = URI("https://house-plants.p.rapidapi.com/all")
 
-  Plant.create!(plants_hash)
+# http = Net::HTTP.new(url.host, url.port)
+# http.use_ssl = true
+# http.verify_mode = OpenSSL::SSL::VERIFY_NONE
+# request = Net::HTTP::Get.new(url)
+# request["X-RapidAPI-Host"] = 'house-plants.p.rapidapi.com'
+# request["X-RapidAPI-Key"] = ENV['PLANT_API']
+
+# response = http.request(request)
+# plants_array = JSON.parse(response.read_body)
+
+# plants_array.each do |plants_hash|
+#   # p plants_hash
+#   plants_hash["tempmin"] = plants_hash["tempmin"]["celsius"].to_s + "C"
+#   plants_hash["tempmax"] = plants_hash["tempmax"]["celsius"].to_s + "C"
+#   plants_hash["common"] = plants_hash["common"].first || plants_hash["latin"]
+#   plants_hash.select! do |key, _value|
+#     Plant.column_names.include?(key) && key != "id"
+#   end
+
+#   Plant.create!(plants_hash)
+# end
+
+# commmon: Snake plant
+# common: "Splitleaf Philodendron"
+# common: "Rubber plant"
+# common: "Burro tail"
+# common: "Fernleaf Philodendron"
+# common: "Peace Lily"
+# common: "Fernleaf Philodendron"
+# common: "Maidenhair Fern"
+# common: "Lady palm"
+# common: "Golden Pothos"
+my_plants = [
+  {
+    nickname: "Snakey",
+    photo_url: "https://images.unsplash.com/photo-1599009944997-3544a939813c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    plant: Plant.find_by(common: "Snake plant"),
+    last_watered: Date.today - 7
+  },
+  {
+    nickname: "Monsti",
+    photo_url: "https://images.unsplash.com/photo-1602344571261-8399edc13b2b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    plant: Plant.find_by(common: "Splitleaf Philodendron"),
+    last_watered: Date.today - 5
+  },
+  {
+    nickname: "Chewi",
+    photo_url: "https://images.unsplash.com/photo-1615804509230-86d839151e0c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=987&q=80",
+    plant: Plant.find_by(common: "Rubber plant"),
+    last_watered: Date.today - 3
+  },
+  {
+    nickname: "Burrito",
+    photo_url: "https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg",
+    plant: Plant.find_by(common: "Burro tail"),
+    last_watered: Date.today - 5
+  },
+  {
+    nickname: "Aristotle",
+    photo_url: "https://images.unsplash.com/photo-1615213861173-21494d7354de?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=3164&q=80",
+    plant: Plant.find_by(common: "Fernleaf Philodendron"),
+    last_watered: Date.today - 7
+  },
+  {
+    nickname: "Lily",
+    photo_url: "https://images.unsplash.com/photo-1620310252507-c65943dbd411?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1065&q=80",
+    plant: Plant.find_by(common: "Peace Lily"),
+    last_watered: Date.today - 7
+  },
+  {
+    nickname: "Sansa",
+    photo_url: "https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg",
+    plant: Plant.find_by(common: "Maidenhair Fern"),
+    last_watered: Date.today - 5
+  },
+  {
+    nickname: "Goldi",
+    photo_url: "https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg",
+    plant: Plant.find_by(common: "Golden Pothos"),
+    last_watered: Date.today - 6
+  }
+]
+
+garden_names.each do |garden|
+  Garden.create(name: garden, user: User.last)
 end
 
-3.times do
-  Garden.create(name: garden_names.sample, user: User.last)
-  5.times do
-    file = URI.open("https://cdn.shopify.com/s/files/1/0591/2746/4141/products/857MonsteraRiesemitSTab-min.jpg")
-    plant = MyPlant.create(garden: Garden.last,
-      plant: Plant.all.sample,
-      nickname: Faker::Name.first_name,
-      last_watered: rand((DateTime.now - 2.weeks)..DateTime.now)
-    )
-    plant.photo.attach(
-      io: file,
-      filename: "#{plant[:nickname]}",
-      content_type: 'image/png'
-    )
-    plant.save!
-  end
+my_plants.each do |plant_hash|
+  file = URI.open(plant_hash[:photo_url])
+  plant = MyPlant.new(
+    plant: plant_hash[:plant],
+    nickname: plant_hash[:nickname],
+    last_watered: plant_hash[:last_watered],
+    garden: Garden.all.sample
+  )
+  plant.photo.attach(
+    io: file,
+    filename: "#{plant_hash[:nickname]}",
+    content_type: 'image/png'
+  )
+  plant.save!
 end
 
 # API STUFF WE NEED
