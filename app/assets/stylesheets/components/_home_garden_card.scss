@@ -5,20 +5,17 @@
   border-radius: 8px;
   margin-top: 1em;
   padding-bottom: 8px;
-  border-radius:  0px 0px 8px 8px;
+  border-radius: 0px 0px 8px 8px;
   border-top: none;
   padding-top: 1em;
   padding-bottom: 1em;
   background-color: white;
-
 }
 
 .home-garden img {
-  width: 8rem;
-  height: 12rem;
-  border-radius: 8px 8px 8px 8px;
-  object-position: top;
-  padding-right: 4px;
+  width: 5rem;
+  height: 5rem;
+  border-radius: 8px;
 }
 
 .home-garden-card h2 {
@@ -35,7 +32,7 @@
   background-color: $light-green;
   padding: 1em;
   border-radius: 8px;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
 }
 
 .garden-info-card {
