@@ -100,13 +100,13 @@ Here is a little walk through the app with screenshots of the UI.
 
 
 <!-- images -->
-  <img src="https://i.postimg.cc/PrjF4rq9/Plant-Life-User-Journey-1-Home.png" alt="Plant-Life-User-Journey-1-Home" align="left" width="23%" style="margin-right: 12px"/>
+  <img src="https://i.postimg.cc/PrjF4rq9/Plant-Life-User-Journey-1-Home.png" alt="Plant-Life-User-Journey-1-Home" align="left" width="20%" style="margin-right: 12px"/>
 
-  <img src="https://i.postimg.cc/52P7bBmW/Plant-Life-User-Journey-2-check-notification.png" alt="Plant-Life-User-Journey-2-check-notification" align="left" width="23%" style="margin-right: 12px" />
+  <img src="https://i.postimg.cc/52P7bBmW/Plant-Life-User-Journey-2-check-notification.png" alt="Plant-Life-User-Journey-2-check-notification" align="left" width="20%" style="margin-right: 12px" />
 
-  <img src="https://i.postimg.cc/cJ2F8djD/Plant-Life-User-Journey-3-gardens.png" alt="Plant-Life-User-Journey-3-gardens" align="left" width="23%" style="margin-right: 12px"/>
+  <img src="https://i.postimg.cc/cJ2F8djD/Plant-Life-User-Journey-3-gardens.png" alt="Plant-Life-User-Journey-3-gardens" align="left" width="20%" style="margin-right: 12px"/>
 
-  <img src="https://i.postimg.cc/KvDpsSkz/Plant-Life-User-Journey-4-upload.png" alt="Plant-Life-User-Journey-4-upload" align="left" width="23%" style="margin-right: 12px" />
+  <img src="https://i.postimg.cc/KvDpsSkz/Plant-Life-User-Journey-4-upload.png" alt="Plant-Life-User-Journey-4-upload" align="left" width="20%" style="margin-right: 12px" />
 
   <br clear="left"/>
 
@@ -119,14 +119,14 @@ Here is a little walk through the app with screenshots of the UI.
 ----
 
 
-  <img src="https://i.postimg.cc/qqdQjjpy/Plant-Life-User-Journey-5-photo.png" alt="Plant-Life-User-Journey-5-photo" align="left" width="23%" style="margin-right: 12px" />
+  <img src="https://i.postimg.cc/qqdQjjpy/Plant-Life-User-Journey-5-photo.png" alt="Plant-Life-User-Journey-5-photo" align="left" width="20%" style="margin-right: 12px" />
 
-  <img src="https://i.postimg.cc/jSqgpgPh/Plant-Life-User-Journey-6-got-the-plant.png" alt="Plant-Life-User-Journey-6-got-the-plant" align="left" width="23%" style="margin-right: 12px" />
+  <img src="https://i.postimg.cc/jSqgpgPh/Plant-Life-User-Journey-6-got-the-plant.png" alt="Plant-Life-User-Journey-6-got-the-plant" align="left" width="20%" style="margin-right: 12px" />
 
-  <img src="https://i.postimg.cc/R0NPFWP6/Plant-Life-User-Journey-6-gottheplant-rename.png" alt="Plant-Life-User-Journey-6-gottheplant-rename" align="left" width="23%" style="margin-right: 12px" />
+  <img src="https://i.postimg.cc/R0NPFWP6/Plant-Life-User-Journey-6-gottheplant-rename.png" alt="Plant-Life-User-Journey-6-gottheplant-rename" align="left" width="20%" style="margin-right: 12px" />
 
 
-  <img src="https://i.postimg.cc/4dcB6rRX/Plant-Life-User-Journey-7-plant-detail.png" alt="Plant-Life-User-Journey-7-plant-detail" align="left" width="23%" />
+  <img src="https://i.postimg.cc/4dcB6rRX/Plant-Life-User-Journey-7-plant-detail.png" alt="Plant-Life-User-Journey-7-plant-detail" align="left" width="20%" />
 
 <br clear="left"/>
 <br><br><br>
